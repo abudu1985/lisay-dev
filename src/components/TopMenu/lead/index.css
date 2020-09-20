@@ -1,0 +1,22 @@
+.top-menu-lead {
+    padding: 10px;
+    color: beige;
+    display: inline-block;
+    float: left;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.top-menu-lead:hover{
+    cursor: pointer;
+    color: #efefc3;
+}
+
+@media screen and (max-width: 600px) {
+    .top-menu-lead {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        float: none;
+    }
+}

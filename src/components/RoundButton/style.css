@@ -1,0 +1,19 @@
+.cgnintro-roundbutton {
+  background: #269ce9;
+  color: #fff;
+  height: 38px;
+  padding: 0px 20px;
+  cursor: pointer;
+}
+.cgnintro-roundbutton.cgnintro-roundbutton-green {
+  background: #1db731;
+}
+.cgnintro-roundbutton.cgnintro-roundbutton-red {
+  background: #e94625;
+}
+.cgnintro-roundbutton:hover:enabled {
+  filter: brightness(1.1);
+}
+.cgnintro-roundbutton:disabled {
+  background: #dbe2e5;
+}
