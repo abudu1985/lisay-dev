@@ -11,12 +11,15 @@ import './index.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {isLoggedUser} from "../../store/selectors/userSelectors";
 import {signout} from "../../store/actions/auth";
-import {getAllArtiles} from "../../store/actions/articles";
+import {getAllArtiles, setSearchByString} from "../../store/actions/articles";
+import {getSearchString} from "../../store/selectors/searchSelectors";
 
 
 const TopMenu = (props) => {
     const [menuClass, setMenuClass] = useState('');
+    const [searchString, setSearchString] = useState('');
     const isLoggedIn = useSelector(isLoggedUser);
+    const reduxSearchString = useSelector(getSearchString);
     const dispatch = useDispatch();
 
     const setToggleTopMenuClass = () => setMenuClass(menuClass ? '' : 'toggled');
@@ -26,11 +29,32 @@ const TopMenu = (props) => {
         dispatch(getAllArtiles())
     }, [dispatch]);
 
+    useEffect(() => {
+        if(!reduxSearchString.length && searchString) setSearchString('');
+    }, [reduxSearchString]);
+
+    const handleSearchChange = (e) => {
+        setSearchString(e.target.value);
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        dispatch(setSearchByString(searchString))
+    };
+
     return (
         <div>
             <div className={top_menu_class} >
                 <Lead text="lisay-dev" />
                 <div className="right">
+                    <form onSubmit={handleSearchSubmit}>
+                        <input type="text"
+                               name="search"
+                               placeholder="Search.."
+                               onChange={handleSearchChange}
+                               value={searchString}
+                        />
+                    </form>
                     {isLoggedIn && (
                         <Fragment>
                             <NavLink to="/dashboard" className="top-menu-item">

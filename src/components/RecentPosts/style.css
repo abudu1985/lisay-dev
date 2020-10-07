@@ -13,3 +13,8 @@
     padding: 15px;
     font-size: larger;
 }
+
+#reset-centered {
+    text-align: center;
+    margin-bottom: 14px;
+}

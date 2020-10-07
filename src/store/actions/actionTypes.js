@@ -25,3 +25,6 @@ export const ADD_ARTICLE = "ADD_ARTICLE";
 export const EDIT_ARTICLE = "EDIT_ARTICLE";
 export const GET_ARTICLES = "GET_ARTICLES";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const SET_SEARCH_BY_STRING = "SET_SEARCH_BY_STRING";
+export const SET_SEARCH_BY_TAG = "SET_SEARCH_BY_TAG";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";

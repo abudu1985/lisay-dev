@@ -1,12 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import './style.css';
 import affirmations from "../../services/affirmations";
 import cat from '../../services/cat.png';
 import Card from '../Card';
-
-// import blogPost from '../../data/blog.json';
-// import { NavLink } from 'react-router-dom';
-// import {ArticlesDataContext} from "contexts/articlesData";
+import {getArticlesTagsTally} from "../../store/selectors/articlesSelectors";
+import {setSearchByTag} from "../../store/actions/articles";
 
 /**
 * @author
@@ -15,10 +14,43 @@ import Card from '../Card';
 
 const Sidebar = (props) => {
     const [affirmation, setAffirmation] = useState('');
+    const [articlesTagsTally, setArticlesTagsTally] = useState([]);
     const getRandomAffirmation = () => affirmations[Math.floor(Math.random() * affirmations.length)];
+    const tagsTally = useSelector(getArticlesTagsTally);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         setAffirmation(getRandomAffirmation()) ;
-    }, []);
+        setArticlesTagsTally(tagsTally);
+    }, [tagsTally]);
+
+    const handleSearchSubmit = searchTag => {
+        dispatch(setSearchByTag(searchTag))
+    };
+
+    const renderTags = () => {
+        const keys = Object.keys(articlesTagsTally);
+        if(!keys.length) return null;
+        const max = Math.max(...Object.values(articlesTagsTally));
+        const min = Math.min(...Object.values(articlesTagsTally));
+        const fontMin = 10;
+        const fontMax = 20;
+        return keys.map((item, index) => {
+            let count = articlesTagsTally[item];
+
+            let size = count === min ? fontMin
+                : (count / max) * (fontMax - fontMin) + fontMin;
+            return (
+                <div className="articlesTagsElement"
+                     style={{fontSize: size}}
+                     onClick={() => handleSearchSubmit(item)}
+                     key={index}
+                >
+                    {item}&nbsp;
+                </div>
+            )
+        });
+    };
 
   return(
       <div className="sidebarContainer" style={{
@@ -36,39 +68,10 @@ const Sidebar = (props) => {
                     <p className="personalBio">My name is Cat I am a software developer specialization in Front end developement....:)</p>
                 </div>
             </Card>
-
-            {/*<Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>*/}
-                {/*<div className="cardHeader">*/}
-                    {/*<span>Social Network</span>*/}
-                {/*</div>*/}
-            {/*</Card>*/}
-
-            {/*<Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>*/}
-                {/*<div className="cardHeader">*/}
-                    {/*<span>Recent Posts</span>*/}
-                {/*</div>*/}
-
-                {/*<div className="recentPosts">*/}
-
-                    {/*{*/}
-                        {/*posts.map(post => {*/}
-                            {/*return (*/}
-                                {/*<NavLink key={post.id} to={`/articles/${post.slug}`}>*/}
-                                    {/*<div className="recentPost">*/}
-                                        {/*<h3>{post.blogTitle}</h3>*/}
-                                        {/*<span>{post.postedOn}</span>*/}
-                                    {/*</div>*/}
-                                {/*</NavLink>*/}
-                                {/**/}
-                            {/*);*/}
-                        {/*})*/}
-                    {/*}*/}
-                {/*</div>*/}
-
-            {/*</Card>*/}
+          <div className="sidebarAffirmation">{renderTags()}</div>
       </div>
     
    )
-}
+};
 
 export default Sidebar
