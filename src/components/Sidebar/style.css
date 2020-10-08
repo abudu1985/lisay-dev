@@ -69,3 +69,7 @@
 .articlesTagsElement:hover {
     background-color: yellow;
 }
+
+.articlesTagsElement.active {
+    background-color: yellow;
+}

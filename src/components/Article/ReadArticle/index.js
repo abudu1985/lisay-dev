@@ -39,6 +39,9 @@ const ReadArticle = ({location, history}) => {
             <div className="readArticleTitle">
                 {article.title}
             </div>
+            <div className="readArticleTitle">
+                {article.description}
+            </div>
             <div className="readArticleBodyBlock">
                 <ReactQuill
                     defaultValue={article.body}

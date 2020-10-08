@@ -56,7 +56,7 @@ const Dashboard = ({history}) => {
                 {tableData.map(doc => (
                     <tr key={doc.title}>
                         <th scope="row">{doc.title}</th>
-                        <td>{doc.tagList.map(tag => (<span key={tag}>{tag}&nbsp;</span>))}</td>
+                        <td>{doc.tagList.map((tag, index) => (<span key={`${tag}${index}`}>{tag}&nbsp;</span>))}</td>
 
                         <th scope="row">
                             <span className={doc.isPublished ? "published-blue" : "published-red"}>

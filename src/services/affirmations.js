@@ -3,7 +3,7 @@ const affirmations = [
     "You'll figure it out",
     "You're a smart cookie",
     "I believe in you",
-    "Sucking at something is the first step towards being good at something",
+    "Fail at something is the first step towards being good at something",
     "Struggling is part of learning",
     "Everything has cracks - that's how the light gets in",
     "Mistakes don't make you less capable",

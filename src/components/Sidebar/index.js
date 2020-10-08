@@ -6,6 +6,8 @@ import cat from '../../services/cat.png';
 import Card from '../Card';
 import {getArticlesTagsTally} from "../../store/selectors/articlesSelectors";
 import {setSearchByTag} from "../../store/actions/articles";
+import {getSearchTag} from "../../store/selectors/searchSelectors";
+import classNames from 'classnames';
 
 /**
 * @author
@@ -17,6 +19,7 @@ const Sidebar = (props) => {
     const [articlesTagsTally, setArticlesTagsTally] = useState([]);
     const getRandomAffirmation = () => affirmations[Math.floor(Math.random() * affirmations.length)];
     const tagsTally = useSelector(getArticlesTagsTally);
+    const searchTag = useSelector(getSearchTag);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -41,7 +44,8 @@ const Sidebar = (props) => {
             let size = count === min ? fontMin
                 : (count / max) * (fontMax - fontMin) + fontMin;
             return (
-                <div className="articlesTagsElement"
+                <div
+                    className={classNames("articlesTagsElement", {active: searchTag && searchTag === item})}
                      style={{fontSize: size}}
                      onClick={() => handleSearchSubmit(item)}
                      key={index}
@@ -65,7 +69,7 @@ const Sidebar = (props) => {
                     <img src={cat} alt="" />
                 </div>
                 <div className="cardBody">
-                    <p className="personalBio">My name is Cat I am a software developer specialization in Front end developement....:)</p>
+                    <p className="personalBio">My name is Cat I am a software developer specialized in Frontend development....:)</p>
                 </div>
             </Card>
           <div className="sidebarAffirmation">{renderTags()}</div>
