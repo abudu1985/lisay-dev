@@ -70,7 +70,7 @@ export const signin = (email, password, callback) => async dispatch => {
       .signInWithEmailAndPassword(email, password)
       .then(data => {
         if (data.user) {  //  if (data.user.emailVerified) {
-          console.log("IF", data.user.emailVerified);
+        //  console.log("IF", data.user.emailVerified);
           dispatch({ type: SIGNIN_SUCCESS });
           callback();
         }

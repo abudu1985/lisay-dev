@@ -83,7 +83,7 @@ Editor.modules = {
         // toggle to add extra line breaks when pasting HTML:
         matchVisual: false,
     }
-}
+};
 /*
  * Quill editor formats
  * See https://quilljs.com/docs/formats/

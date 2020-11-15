@@ -6,3 +6,19 @@
     color: white;
     text-align: center;
 }
+
+.footerContentCenter {
+    text-align: center;
+    padding: 30px;
+    line-height: 25px;
+}
+
+.footerSocials {
+    width: 35px;
+    margin-right: 15px;
+}
+
+.footerSocials:hover {
+    transform: scale(1.2);
+    opacity: 0.6;
+}

@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import classNames from 'classnames';
 import './style.css';
 import affirmations from "../../services/affirmations";
-import cat from '../../services/cat.png';
 import Card from '../Card';
 import {getArticlesTagsTally} from "../../store/selectors/articlesSelectors";
 import {setSearchByTag} from "../../store/actions/articles";
 import {getSearchTag} from "../../store/selectors/searchSelectors";
-import classNames from 'classnames';
 
 /**
-* @author
-* @function Sidebar
-**/
+ * @author
+ * @function Sidebar
+ **/
 
 const Sidebar = (props) => {
     const [affirmation, setAffirmation] = useState('');
@@ -23,7 +22,7 @@ const Sidebar = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setAffirmation(getRandomAffirmation()) ;
+        setAffirmation(getRandomAffirmation());
         setArticlesTagsTally(tagsTally);
     }, [tagsTally]);
 
@@ -33,7 +32,7 @@ const Sidebar = (props) => {
 
     const renderTags = () => {
         const keys = Object.keys(articlesTagsTally);
-        if(!keys.length) return null;
+        if (!keys.length) return null;
         const max = Math.max(...Object.values(articlesTagsTally));
         const min = Math.min(...Object.values(articlesTagsTally));
         const fontMin = 10;
@@ -46,9 +45,9 @@ const Sidebar = (props) => {
             return (
                 <div
                     className={classNames("articlesTagsElement", {active: searchTag && searchTag === item})}
-                     style={{fontSize: size}}
-                     onClick={() => handleSearchSubmit(item)}
-                     key={index}
+                    style={{fontSize: size}}
+                    onClick={() => handleSearchSubmit(item)}
+                    key={index}
                 >
                     {item}&nbsp;
                 </div>
@@ -56,26 +55,29 @@ const Sidebar = (props) => {
         });
     };
 
-  return(
-      <div className="sidebarContainer" style={{
-          width: props.width
-      }}>
-          <div className="sidebarAffirmation">{affirmation}</div>
-            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+    const ts = new Date().getTime();
+    const catSrc = ` http://thecatapi.com/api/images/get?format=src&type=gif&timestamp=${ts}`;
+    return (
+        <div className="sidebarContainer" style={{
+            width: props.width
+        }}>
+            <div className="sidebarAffirmation">{affirmation}</div>
+            <Card style={{marginBottom: '20px', padding: '20px', boxSizing: 'border-box'}}>
                 <div className="cardHeader">
                     <span>About Me</span>
                 </div>
                 <div className="profileImageContainer">
-                    <img src={cat} alt="" />
+                    <img src={catSrc} alt=""/>
                 </div>
                 <div className="cardBody">
-                    <p className="personalBio">My name is Cat I am a software developer specialized in Frontend development....:)</p>
+                    <p className="personalBio">My name is Cat I am a software developer specialized in Frontend
+                        development....:)</p>
                 </div>
             </Card>
-          <div className="sidebarAffirmation">{renderTags()}</div>
-      </div>
-    
-   )
+            <div className="sidebarAffirmation">{renderTags()}</div>
+        </div>
+
+    )
 };
 
 export default Sidebar
