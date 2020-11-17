@@ -9,6 +9,7 @@ import {getSearchString, getSearchTag} from "../../store/selectors/searchSelecto
 import { splitEvery } from "../../utils/functions"
 import withGlobalLayout from "../hoc/withGlobalLayout";
 import {clearSearch} from "../../store/actions/articles";
+import Preloader from "../Preloader";
 
 
 const FeedItem = ({article}, ) => {
@@ -69,7 +70,8 @@ const RecentPosts = (props) => {
     if(searchString) publishedArticles = findBySearchString(publishedArticles, searchString);
     if(searchTag) publishedArticles = findBySearchTag(publishedArticles, searchTag);
 
-    return (<Fragment>
+    return publishedArticles.length ?
+    (<Fragment>
         {
             (searchString || searchTag) &&
             <div id="reset-centered">
@@ -84,7 +86,7 @@ const RecentPosts = (props) => {
         {splitEvery(publishedArticles, 3).map((articlesRowChunk, index) =>
             <FeedRow array={articlesRowChunk} key={index}/>)
         }
-    </Fragment>)
+    </Fragment>) : <Preloader/>
     };
 
 export default withGlobalLayout(RecentPosts);

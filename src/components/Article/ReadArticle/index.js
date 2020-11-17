@@ -12,7 +12,6 @@ const ReadArticle = ({location, history}) => {
 
     useEffect(() => {
         const {state: {data}} = location;
-        console.log('data -> ', data);
         if (!data) {
             history.replace('/')
         }

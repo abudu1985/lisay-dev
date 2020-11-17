@@ -70,8 +70,8 @@ const Sidebar = (props) => {
                     <img src={catSrc} alt=""/>
                 </div>
                 <div className="cardBody">
-                    <p className="personalBio">My name is Cat I am a software developer specialized in Frontend
-                        development....:)</p>
+                    <p className="personalBio">Funny cats...)</p>
+                    <p className="personalBio"> I am blogging what I've learned and interested in, to find later here for myself.</p>
                 </div>
             </Card>
             <div className="sidebarAffirmation">{renderTags()}</div>

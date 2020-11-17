@@ -13,6 +13,7 @@ import {isLoggedUser} from "../../store/selectors/userSelectors";
 import {signout} from "../../store/actions/auth";
 import {getAllArtiles, setSearchByString} from "../../store/actions/articles";
 import {getSearchString} from "../../store/selectors/searchSelectors";
+import useWindowSize from "../../utils/useWindowSize";
 
 
 const TopMenu = (props) => {
@@ -21,6 +22,7 @@ const TopMenu = (props) => {
     const isLoggedIn = useSelector(isLoggedUser);
     const reduxSearchString = useSelector(getSearchString);
     const dispatch = useDispatch();
+    const {width} = useWindowSize();
 
     const setToggleTopMenuClass = () => setMenuClass(menuClass ? '' : 'toggled');
     let top_menu_class = `top-menu ${menuClass}`;
@@ -42,48 +44,78 @@ const TopMenu = (props) => {
         dispatch(setSearchByString(searchString))
     };
 
-    return (
-        <div>
-            <div className={top_menu_class} >
-                <Lead text="lisay-dev" />
-                <div className="right">
-                    <form onSubmit={handleSearchSubmit}>
-                        <input type="text"
-                               name="search"
-                               placeholder="Search.."
-                               onChange={handleSearchChange}
-                               value={searchString}
-                        />
-                    </form>
-                    {isLoggedIn && (
-                        <Fragment>
-                            <NavLink to="/dashboard" className="top-menu-item">
-                                Dashboard
-                            </NavLink>
-                            <NavLink to="/articles/new" className="top-menu-item">
-                                New Post
-                            </NavLink>
-                            <div className="top-menu-item" onClick={logout}>
-                                Logout
-                            </div>
-                        </Fragment>
-                    )}
-
-                    {!isLoggedIn && (
-                        <Fragment>
-                            <Item location={'/login'} text='Login' />
-                        </Fragment>
-                    )}
-                </div>
-                <FontAwesomeIcon icon={faBars} className='top-menu-icon' onClick={setToggleTopMenuClass}/>
-                <div className='clear-fix' />
-            </div>
-        </div>
-    )
-
     async function logout() {
         dispatch(signout());
         props.history.push('/')
     }
-}
+
+    return (
+        <div>
+            <div className={top_menu_class} >
+                <Lead text="lisay-dev" />
+                {
+                    width > 600 ?
+                        <div className="right">
+                            <form onSubmit={handleSearchSubmit}>
+                                <input type="text"
+                                       name="search"
+                                       placeholder="Search.."
+                                       onChange={handleSearchChange}
+                                       value={searchString}
+                                />
+                            </form>
+                            {isLoggedIn && (
+                                <Fragment>
+                                    <NavLink to="/dashboard" className="top-menu-item">
+                                        Dashboard
+                                    </NavLink>
+                                    <NavLink to="/articles/new" className="top-menu-item">
+                                        New Post
+                                    </NavLink>
+                                    <div className="top-menu-item" onClick={logout}>
+                                        Logout
+                                    </div>
+                                </Fragment>
+                            )}
+                            {!isLoggedIn && (
+                                <Fragment>
+                                    <Item location={'/login'} text='Login' />
+                                </Fragment>
+                            )}
+                        </div> :
+                        <div className="right">
+                            {isLoggedIn && (
+                                <Fragment>
+                                    <NavLink to="/dashboard" className="top-menu-item">
+                                        Dashboard
+                                    </NavLink>
+                                    <NavLink to="/articles/new" className="top-menu-item">
+                                        New Post
+                                    </NavLink>
+                                    <div className="top-menu-item" onClick={logout}>
+                                        Logout
+                                    </div>
+                                </Fragment>
+                            )}
+                            {!isLoggedIn && (
+                                <Fragment>
+                                    <Item location={'/login'} text='Login' />
+                                </Fragment>
+                            )}
+                            <form onSubmit={handleSearchSubmit}>
+                                <input type="text"
+                                       name="search"
+                                       placeholder="Search.."
+                                       onChange={handleSearchChange}
+                                       value={searchString}
+                                />
+                            </form>
+                        </div>
+                }
+                <FontAwesomeIcon icon={faBars} className='top-menu-icon' onClick={setToggleTopMenuClass}/>
+                <div className='clear-fix' />
+            </div>
+        </div>
+    );
+};
 export default  withRouter(TopMenu);

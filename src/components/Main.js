@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Home from "./Home";
 import Login from "./Login";
-import Loader from "./Loader";
+import Loader from "./Preloader";
 
 const Main = ({ auth }) => {
   console.log('auth -> ', auth);

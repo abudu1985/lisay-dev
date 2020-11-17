@@ -1,13 +1,8 @@
-// import app from 'firebase/app'
-// import 'firebase/auth'
-// import 'firebase/firebase-firestore'
 import React from "react";
-import {Redirect} from "react-router-dom";
 import firebase from "../firebase"
 
 class Firestore {
     constructor() {
-        // app.initializeApp(config)
         this.auth = firebase.auth();
         this.db = firebase.firestore();
     }
@@ -21,11 +16,6 @@ class Firestore {
     }
 
     addArticle(article) {
-        // if(!this.auth.currentUser) {
-        //     return <Redirect to="/"/>
-        // }
-        console.log('this.auth.currentUser -> ', this.auth.currentUser);
-        console.log('article -> ', article);
         return  this.db.collection('/articles').add(article);
     }
 
@@ -48,16 +38,6 @@ class Firestore {
         })
     }
 
-    addQuote(quote) {
-        if(!this.auth.currentUser) {
-            return alert('Not authorized')
-        }
-
-        return this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).set({
-            quote
-        })
-    }
-
     isInitialized() {
         return new Promise(resolve => {
             this.auth.onAuthStateChanged(resolve)
@@ -66,11 +46,6 @@ class Firestore {
 
     getCurrentUsername() {
         return this.auth.currentUser && this.auth.currentUser.displayName
-    }
-
-    async getCurrentUserQuote() {
-        const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
-        return quote.get('quote')
     }
 }
 
