@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from 'react'
+import React from 'react'
 import {useDispatch} from "react-redux";
 
 import ArticleForm from '../ArticleForm'
@@ -10,7 +10,6 @@ import './style.css';
 
 
 const CreateArticle = () => {
-  //  const [articlesData, dispatch] = useContext(ArticlesDataContext);
     const dispatch = useDispatch();
     const toast = useToast();
     const initialValues = {
@@ -27,8 +26,6 @@ const CreateArticle = () => {
         article.slug = toDashedLatin(article.title);
         article.postedOn = getMonthDay();
         console.log('article -> ', article);
-        // Firestore.addArticle(article);
-
 
         Firestore.addArticle(article).then(ref => {
             dispatch({type: 'ADD_ARTICLE', payload: article});
@@ -37,15 +34,6 @@ const CreateArticle = () => {
             .catch(error => {
                 toast.add(`${error}`, 'danger');
             });
-     //   toast.add('Article was created!', 'success');
-        //  firebase.addArticle(article).then(ref => {
-        //      dispatch({type: 'ADD_ARTICLE', payload: [...articlesData.articles, article]});
-        //      toast.add('Article was created!', 'success');
-        // })
-        //  .catch(error => {
-        //      toast.add(`${error}`, 'danger');
-        //  });
-
     };
 
     return (

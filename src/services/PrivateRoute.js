@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
+import { useSelector } from 'react-redux'
 import { Route, Redirect } from "react-router-dom";
 import { isLoggedUser } from "../store/selectors/userSelectors";
-import { useSelector } from 'react-redux'
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     const isLoggedIn = useSelector(isLoggedUser);

@@ -28,7 +28,7 @@ const ReadArticle = ({location, history}) => {
             highlight: text => hljs.highlightAuto(text).value,
         },
     };
-
+console.log('article -> ', article);
     return (
         <div>
             <div className="readArticlePreviewImgWrap">
@@ -41,6 +41,9 @@ const ReadArticle = ({location, history}) => {
             <div className="readArticleTitle">
                 {article.description}
             </div>
+            <div className="articleDateBlock">
+                Posted on {article.postedOn}
+            </div>
             <div className="readArticleBodyBlock">
                 <ReactQuill
                     defaultValue={article.body}
@@ -48,6 +51,13 @@ const ReadArticle = ({location, history}) => {
                     readOnly={true}
                     theme={"bubble"}
                 />
+            </div>
+            <div className="tagLabelsBlock">
+                {
+                    article.tagList.map((tag, index) => {
+                        return (<span className="tagLabel" key={index}>{tag}</span>)
+                    })
+                }
             </div>
         </div>
     )

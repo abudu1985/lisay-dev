@@ -37,7 +37,15 @@ const Sidebar = (props) => {
         const min = Math.min(...Object.values(articlesTagsTally));
         const fontMin = 10;
         const fontMax = 20;
-        return keys.map((item, index) => {
+
+        return keys.sort((a, b) => {
+            let nameA=a.toLowerCase(), nameB=b.toLowerCase();
+            if (nameA < nameB)
+                return -1;
+            if (nameA > nameB)
+                return 1;
+            return 0;
+        }).map((item, index) => {
             let count = articlesTagsTally[item];
 
             let size = count === min ? fontMin
@@ -71,7 +79,7 @@ const Sidebar = (props) => {
                 </div>
                 <div className="cardBody">
                     <p className="personalBio">Funny cats...)</p>
-                    <p className="personalBio"> I am blogging what I've learned and interested in, to find later here for myself.</p>
+                    <p className="personalBio"> I am noting what I've learned and interested in, to find later here for myself.</p>
                 </div>
             </Card>
             <div className="sidebarAffirmation">{renderTags()}</div>

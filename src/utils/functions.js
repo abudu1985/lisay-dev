@@ -13,7 +13,7 @@ export const toDashedLatin = (str) => {
     for (let i = 0; i < str.length; ++i) {
         n_str.push(
             ru[str[i]]
-            || ru[str[i].toLowerCase()] == undefined && str[i]
+            || ru[str[i].toLowerCase()] === undefined && str[i]
             || ru[str[i].toLowerCase()].replace(/^(.)/, function (match) {
                 return match.toUpperCase()
             })
