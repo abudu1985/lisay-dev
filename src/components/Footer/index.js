@@ -6,11 +6,6 @@ import Instagram from '../../services/Instagram.png';
 import LinkedIn from '../../services/LinkedIn.png';
 
 
-/**
- * @author
- * @function Card
- **/
-
 const Footer = (props) => {
     const data = new Date().getFullYear();
     return(

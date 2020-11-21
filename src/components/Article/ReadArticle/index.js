@@ -5,6 +5,7 @@ import ReactQuill from 'react-quill';
 import hljs from "highlight.js";
 import 'highlight.js/styles/darcula.css';
 import 'react-quill/dist/quill.bubble.css';
+import LightBoxImage from "../../LightBoxImage";
 
 
 const ReadArticle = ({location, history}) => {
@@ -16,7 +17,7 @@ const ReadArticle = ({location, history}) => {
             history.replace('/')
         }
         setArticle(data);
-    },[]);
+    },[location, history]);
     if (!article) return null;
 
     hljs.configure({
@@ -28,12 +29,14 @@ const ReadArticle = ({location, history}) => {
             highlight: text => hljs.highlightAuto(text).value,
         },
     };
-console.log('article -> ', article);
+
     return (
         <div>
-            <div className="readArticlePreviewImgWrap">
-                <img className="readArticlePreviewImgChild" src={article.articlePreview} alt=""/>
-            </div>
+            <LightBoxImage
+                imageClass="readArticlePreviewImgChild"
+                imageSrc={article.articlePreview}
+                wrapperClass="readArticlePreviewImgWrap"
+            />
             <br/>
             <div className="readArticleTitle">
                 {article.title}

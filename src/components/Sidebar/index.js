@@ -7,6 +7,7 @@ import Card from '../Card';
 import {getArticlesTagsTally} from "../../store/selectors/articlesSelectors";
 import {setSearchByTag} from "../../store/actions/articles";
 import {getSearchTag} from "../../store/selectors/searchSelectors";
+import LightBoxImage from "../LightBoxImage";
 
 /**
  * @author
@@ -72,11 +73,13 @@ const Sidebar = (props) => {
             <div className="sidebarAffirmation">{affirmation}</div>
             <Card style={{marginBottom: '20px', padding: '20px', boxSizing: 'border-box'}}>
                 <div className="cardHeader">
-                    <span>About Me</span>
+                    <span>About </span><span className="cardHeaderSecond">It</span>
                 </div>
-                <div className="profileImageContainer">
-                    <img src={catSrc} alt=""/>
-                </div>
+                <LightBoxImage
+                    imageClass=""
+                    imageSrc={catSrc}
+                    wrapperClass="profileImageContainer"
+                />
                 <div className="cardBody">
                     <p className="personalBio">Funny cats...)</p>
                     <p className="personalBio"> I am noting what I've learned and interested in, to find later here for myself.</p>
