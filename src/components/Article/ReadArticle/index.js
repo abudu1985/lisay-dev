@@ -41,7 +41,8 @@ const ReadArticle = ({location, history}) => {
             <div className="readArticleTitle">
                 {article.title}
             </div>
-            <div className="readArticleTitle">
+            <br/>
+            <div className="readArticleDescription">
                 {article.description}
             </div>
             <div className="articleDateBlock">

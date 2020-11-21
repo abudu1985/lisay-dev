@@ -1,29 +1,12 @@
-.readArticlePreviewImgWrap {
-    text-align: center;
-    height: 320px;
-}
-
-.readArticlePreviewImgWrap:before {
-    content: '';
-    height: 320px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.readArticlePreviewImgChild {
-    background-color: #cbf1a9;
-    display: inline-block;
-    vertical-align: middle;
-    -moz-transition: font-size linear 1s;
-    -o-transition: font-size linear 1s;
-    -webkit-transition: font-size linear 1s;
-    transition: font-size linear 1s;
-    max-height: 320px;
-}
 
 .readArticleTitle {
     text-align: center;
-    font-size: larger;
+    font-size: x-large;
+}
+
+.readArticleDescription {
+    text-align: center;
+    font-size: large;
 }
 
 .readArticleBodyBlock {
@@ -53,4 +36,17 @@
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
+}
+
+.readArticlePreviewImgWrap{
+    width: 100%;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.readArticlePreviewImgChild{
+    width: 100%;
+    max-width: 420px;
+    height: auto;
 }

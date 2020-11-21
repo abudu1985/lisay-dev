@@ -9,7 +9,7 @@ export const getPublishedArticles = createSelector(
 );
 
 export const getArticlesTagsTally = createSelector(
-    getArticles,
+    getPublishedArticles,
     articles => {
         if (!articles.length) return {};
         const arr = articles.map(cur => cur.tagList)
