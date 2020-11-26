@@ -36,13 +36,13 @@ const FeedItem = ({article}, ) => {
 const FeedRow = ({array}) => {
    return <Container>
         <Row>
-            <Col sm={4}>
+            <Col lg={4} md={6} sm={6}  xs={12}>
                 <FeedItem article={array[0]} />
             </Col>
-            <Col sm={4}>
+            <Col lg={4} md={6} sm={6}  xs={12}>
                 <FeedItem article={array[1]} />
             </Col>
-            <Col sm={4}>
+            <Col lg={4} md={6} sm={6}  xs={12}>
                 <FeedItem article={array[2]} />
             </Col>
         </Row>
