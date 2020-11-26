@@ -8,7 +8,7 @@ export const toDashedLatin = (str) => {
         'щ': 'shch', 'ы': 'y', 'э': 'e', 'ю': 'u', 'я': 'ya'
     }, n_str = [];
 
-    str = str.replace(/[ъь]+/g, '').replace(/й/g, 'i');
+    str = str.replace(/[ъь]+/g, '').replace(/й/g, 'i').toLowerCase();
 
     for (let i = 0; i < str.length; ++i) {
         n_str.push(
