@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import withGlobalLayout from "../../hoc/withGlobalLayout";
 import './style.css';
 import ReactQuill from 'react-quill';
@@ -7,18 +7,14 @@ import 'highlight.js/styles/darcula.css';
 import 'react-quill/dist/quill.bubble.css';
 import LightBoxImage from "../../LightBoxImage";
 
+const scrollWindowToTop = () => window.scrollTo(0, 0);
 
 const ReadArticle = ({location, history}) => {
-    const [article, setArticle] = useState(null);
-
-    useEffect(() => {
-        const {state: {data}} = location;
-        if (!data) {
-            history.replace('/')
-        }
-        setArticle(data);
-    },[location, history]);
-    if (!article) return null;
+    const {state: {data: article}} = location;
+    scrollWindowToTop();
+    if (!article) {
+        history.replace('/')
+    }
 
     hljs.configure({
         languages: ['javascript', 'ruby', 'python', 'rust'],

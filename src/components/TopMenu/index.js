@@ -72,6 +72,9 @@ const TopMenu = (props) => {
                                     <NavLink to="/articles/new" className="top-menu-item">
                                         New Post
                                     </NavLink>
+                                    <NavLink to="/quote" className="top-menu-item">
+                                        Quote
+                                    </NavLink>
                                     <div className="top-menu-item" onClick={logout}>
                                         Logout
                                     </div>

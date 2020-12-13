@@ -20,6 +20,7 @@ const LightBoxImage = ({imageSrc, imageClass, wrapperClass}) => {
                 <Lightbox
                     mainSrc={imageSrc}
                     onCloseRequest={() => setIsOpen(false)}
+                    onImageLoad={() => {}}
                 />
             )}
         </div>

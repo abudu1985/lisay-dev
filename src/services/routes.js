@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import CreateArticle from "../components/Article/CreateArticle";
 import EditArticle from '../components/Article/EditArticle'
 import ReadArticle from "../components/Article/ReadArticle";
+import Quote from "../components/Quote";
 
 
 const Routes = () => {
@@ -18,6 +19,7 @@ const Routes = () => {
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/articles/new" component={CreateArticle} />
       <PrivateRoute path="/articles/:slug/edit" component={EditArticle} />
+      <PrivateRoute path="/quote" component={Quote} />
     </Switch>
   )
 };

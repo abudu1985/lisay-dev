@@ -50,6 +50,11 @@ const affirmations = [
     "If you want a thing done well, do it yourself",
     "It's only words... unless they're true",
     "What you choose also chooses you",
+    "People blame Redux, React, functional programming, immutability, and many other things for their woes.",
+    "Describe the logic for handling changes as pure functions",
+    "The tradeoff that Redux offers is to add indirection to decouple “what happened” from “how things change”.",
+    "Having a plan is, in the parlance of our times, the key",
+    "If you trade something off, make sure you get something in return."
 ];
 
 export default affirmations;

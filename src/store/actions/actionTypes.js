@@ -28,3 +28,9 @@ export const DELETE_ARTICLE = "DELETE_ARTICLE";
 export const SET_SEARCH_BY_STRING = "SET_SEARCH_BY_STRING";
 export const SET_SEARCH_BY_TAG = "SET_SEARCH_BY_TAG";
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
+
+// QUOTES
+export const ADD_QUOTE = "ADD_QUOTE";
+export const EDIT_QUOTE = "EDIT_QUOTE";
+export const SET_QUOTES = "SET_QUOTES";
+export const DELETE_QUOTE = "DELETE_QUOTE";

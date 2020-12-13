@@ -1,0 +1,13 @@
+.articlesTagsElement {
+    cursor: pointer;
+    color: #1a75cc;
+    display: inline-block;
+}
+
+.articlesTagsElement:hover {
+    background-color: yellow;
+}
+
+.articlesTagsElement.active {
+    background-color: yellow;
+}

@@ -1,0 +1,72 @@
+.quoteBlock {
+    background: #209cee;
+    height: 100vh;
+    padding: 30px;
+}
+
+.quote-list {
+    background: #e8e8e8;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.quote {
+    align-items: center;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    padding: 7px 10px;
+}
+
+.quoteCreate {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background: white no-repeat 10px 10px;
+    padding: 12px 20px 12px 30px;
+    transition: width 0.4s ease-in-out;
+    color: #041005;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.quoteCreate:focus{
+    outline: none;
+}
+
+.quoteEdit {
+    border: 0 none;
+    width: 85%;
+    resize: none;
+}
+
+.chosenToAlarm {
+    background: antiquewhite;
+}
+
+.quoteEdit:focus{
+    outline: none;
+}
+
+.quoteLoginBlock {
+    height: 170px;
+    width: 100%;
+    background: white;
+    margin-top: 8px;
+    border-radius: 4px;
+    padding: 5px 20px;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.hided {
+    display: none;
+}

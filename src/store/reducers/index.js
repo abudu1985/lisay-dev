@@ -4,6 +4,7 @@ import authReducer from "./auth";
 import apiStatusReducer from "./apiStatus";
 import articlesReducer from "./articles";
 import searchReducer from "./search";
+import quotesReducer from "./quotes";
 
 export default combineReducers({
   firebaseReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   apiStatusReducer,
   articlesReducer,
   searchReducer,
+    quotesReducer,
 });
