@@ -8,27 +8,26 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/darcula.css';
 
 class Editor extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = { editorHtml: props.value ? props.value : '', theme: 'snow' }
-        this.handleChange = this.handleChange.bind(this)
+    componentWillMount() {
+        const { value } = this.props;
+        this.setState({editorHtml: value ? value : '', theme: 'snow'})
     }
 
-    handleChange (html) {
-        this.setState({ editorHtml: html });
-        this.props.onChange(html);
-    }
-
-    handleThemeChange (newTheme) {
-        if (newTheme === "core") newTheme = null;
-        this.setState({ theme: newTheme })
-    }
-
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps) {
         if (this.props.value !== nextProps.value) {
             this.setState({ editorHtml: nextProps.value });
         }
     }
+
+    handleChange = html => {
+        this.setState({ editorHtml: html });
+        this.props.onChange(html);
+    };
+
+    handleThemeChange = newTheme => {
+        if (newTheme === "core") newTheme = null;
+        this.setState({ theme: newTheme })
+    };
 
     render () {
         return (

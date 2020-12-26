@@ -11,7 +11,7 @@ import Tags from "../Tags";
  * @function Sidebar
  **/
 
-const Sidebar = (props) => {
+const Sidebar = ({ width }) => {
     const [affirmation, setAffirmation] = useState('');
     const [catSrc, setCatSrc] = useState('');
 
@@ -31,10 +31,8 @@ const Sidebar = (props) => {
 
 
     return (
-        <div className="sidebarContainer" style={{
-            width: props.width
-        }}>
-            <div className="sidebarAffirmation">{affirmation}</div>
+        <div className="sidebarContainer" style={{ width }}>
+            {affirmation && <div className="sidebarAffirmation">{affirmation}</div>}
             <Card style={{marginBottom: '20px', padding: '20px', boxSizing: 'border-box'}}>
                 <div className="cardHeader">
                     <span>About </span><span className="cardHeaderSecond">It</span>

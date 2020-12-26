@@ -110,7 +110,6 @@ const ArticleForm = ({onSubmit, initialValues}) => {
                         <Row>
                             <Col md={12}>
                                 <BootstrapLikeInput
-                                    type="text"
                                     className=""
                                     placeholder="Article title"
                                     value={title}
@@ -122,7 +121,6 @@ const ArticleForm = ({onSubmit, initialValues}) => {
                         <Row>
                             <Col md={12}>
                                 <BootstrapLikeInput
-                                    type="text"
                                     className=""
                                     placeholder="What is this article about?"
                                     value={description}
@@ -134,7 +132,6 @@ const ArticleForm = ({onSubmit, initialValues}) => {
                         <Row>
                             <Col md={12}>
                                 <BootstrapLikeInput
-                                    type="text"
                                     className="form-control form-control-lg"
                                     placeholder="Enter tags"
                                     value={tagList}
