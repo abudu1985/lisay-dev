@@ -19,6 +19,6 @@
 }
 
 .footerSocials:hover {
-    transform: scale(1.2);
-    opacity: 0.6;
+    transform: scale(1.1);
+    opacity: 0.8;
 }

@@ -1,0 +1,33 @@
+.arrowItem {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 26px;
+    border: none;
+    outline: none;
+    background-color: #b6b9bd;
+    color: white;
+    cursor: pointer;
+    padding: 3px 10px;
+    border-radius: 4px;
+    animation: fadeIn 0.3s;
+}
+
+.showItem {
+    display: block;
+}
+
+.arrowItem:hover {
+    background-color: #6b6d70;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

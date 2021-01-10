@@ -1,30 +1,39 @@
-import React from 'react'
-import withGlobalLayout from "../../hoc/withGlobalLayout";
+import React, {useEffect} from 'react'
+import {useSelector} from "react-redux";
 import './style.css';
-import ReactQuill from 'react-quill';
-import hljs from "highlight.js";
-import 'highlight.js/styles/darcula.css';
-import 'react-quill/dist/quill.bubble.css';
+import withGlobalLayout from "../../hoc/withGlobalLayout";
 import LightBoxImage from "../../LightBoxImage";
+import {getSearchString, getSearchTag} from "../../../store/selectors/searchSelectors";
+import PrevNextBlock from "../PrevNextBlock";
+import QuillBodyBlock from "./QuillBodyBlock";
 
 const scrollWindowToTop = () => window.scrollTo(0, 0);
 
 const ReadArticle = ({location, history}) => {
-    const {state: {data: article}} = location;
+    const {state: {data, data: article}} = location;
+    const searchString = useSelector(getSearchString);
+    const searchTag = useSelector(getSearchTag);
+
+    useEffect(() => {
+    if (searchString.trim().length || searchTag.trim().length) {
+            history.push({
+                pathname: `/`,
+                state: {data}
+            })
+        }
+    }, [history, location, searchTag, searchString]);
+
+    const goToArticle = nextArticle => {
+        history.push({
+            pathname: `/article/${nextArticle.slug}`,
+            state: {data: nextArticle}
+        })
+    };
+
     scrollWindowToTop();
     if (!article) {
         history.replace('/')
     }
-
-    hljs.configure({
-        languages: ['javascript', 'ruby', 'python', 'rust'],
-    });
-
-    const modules = {
-        syntax: {
-            highlight: text => hljs.highlightAuto(text).value,
-        },
-    };
 
     return (
         <div>
@@ -44,14 +53,7 @@ const ReadArticle = ({location, history}) => {
             <div className="articleDateBlock">
                 Posted on {article.postedOn}
             </div>
-            <div className="readArticleBodyBlock">
-                <ReactQuill
-                    defaultValue={article.body}
-                    modules={modules}
-                    readOnly={true}
-                    theme={"bubble"}
-                />
-            </div>
+            <QuillBodyBlock data={article.body}/>
             <div className="tagLabelsBlock">
                 {
                     article.tagList.map((tag, index) => {
@@ -59,6 +61,7 @@ const ReadArticle = ({location, history}) => {
                     })
                 }
             </div>
+            <PrevNextBlock currentId={article.id} goToArticle={goToArticle}/>
         </div>
     )
 };

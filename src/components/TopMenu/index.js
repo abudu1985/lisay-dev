@@ -52,7 +52,7 @@ const TopMenu = (props) => {
     return (
         <div>
             <div className={top_menu_class} >
-                <Lead text="lisay-dev" />
+                <Lead text="" />
                 {
                     width > 600 ?
                         <div className="right">

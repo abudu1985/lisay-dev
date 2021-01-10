@@ -5,12 +5,12 @@
 }
 
 .postImageTitle {
-    min-height: 60px;
-    line-height: 25px;
+    height: 60px;
+    line-height: 21px;
     text-align: center;
     background: #fff;
     border-radius: 0 0 7px 7px;
-    padding: 15px;
+    padding: 10px 15px;
     font-size: larger;
 }
 

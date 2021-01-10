@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../Layout";
+import ScrollArrow from "../ScrollArrow";
 
 
 const withGlobalLayout = WrappedComponent => props => {
@@ -8,6 +9,7 @@ const withGlobalLayout = WrappedComponent => props => {
             <WrappedComponent
                 {...props}
             />
+            <ScrollArrow point={400}/>
         </Layout>
     );
 };

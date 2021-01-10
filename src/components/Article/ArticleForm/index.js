@@ -4,6 +4,7 @@ import RoundButton from "../../RoundButton";
 import {Container, Row, Col} from 'react-grid-system';
 import BootstrapLikeInput from '../../BootstrapLikeInput';
 import './style.css';
+import {toDashedLatin} from "../../../utils/functions";
 
 const ArticleForm = ({onSubmit, initialValues}) => {
     const [title, setTitle] = useState('');
@@ -24,6 +25,7 @@ const ArticleForm = ({onSubmit, initialValues}) => {
             articlePreview,
             isPublished,
         };
+        article.slug = toDashedLatin(article.title);
         onSubmit(article)
     };
 

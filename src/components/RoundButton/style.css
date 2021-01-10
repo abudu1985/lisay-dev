@@ -1,19 +1,21 @@
-.cgnintro-roundbutton {
+.roundbutton {
   background: #269ce9;
   color: #fff;
   height: 38px;
   padding: 0px 20px;
   cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
 }
-.cgnintro-roundbutton.cgnintro-roundbutton-green {
+.roundbutton.roundbutton-green {
   background: #1db731;
 }
-.cgnintro-roundbutton.cgnintro-roundbutton-red {
+.roundbutton.roundbutton-red {
   background: #e94625;
 }
-.cgnintro-roundbutton:hover:enabled {
+.roundbutton:hover:enabled {
   filter: brightness(1.1);
 }
-.cgnintro-roundbutton:disabled {
+.roundbutton:disabled {
   background: #dbe2e5;
 }

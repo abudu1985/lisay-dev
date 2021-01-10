@@ -1,6 +1,6 @@
 .top-menu {
     background-color: grey;
-    padding: 20px 50px 20px 50px;
+    padding: 10px 50px 0 50px;
     user-select: none;
 }
 
@@ -45,6 +45,12 @@
     display: none;
     height: 40px;
     width: auto;
+}
+
+@media screen and (max-width: 750px) {
+    .top-menu {
+        padding: 10px 20px 0 10px;
+    }
 }
 
 @media screen and (max-width: 600px) {

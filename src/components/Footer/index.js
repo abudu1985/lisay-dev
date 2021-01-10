@@ -6,7 +6,7 @@ import Instagram from '../../services/Instagram.png';
 import LinkedIn from '../../services/LinkedIn.png';
 
 
-const Footer = (props) => {
+const Footer = () => {
     const data = new Date().getFullYear();
     return(
         <div className="footer">
