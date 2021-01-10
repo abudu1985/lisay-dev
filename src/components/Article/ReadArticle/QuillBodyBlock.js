@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactQuill from 'react-quill';
 import hljs from "highlight.js";
-import 'highlight.js/styles/darcula.css';
+import 'highlight.js/styles/vs2015.css';
 import 'react-quill/dist/quill.bubble.css';
 import './style.css';
 
 
 const QuillBodyBlock = ({ data }) => {
     hljs.configure({
-        languages: ['javascript', 'ruby', 'python', 'rust'],
+        languages: ['javascript'],
     });
 
     const modules = {

@@ -9,7 +9,7 @@ import {clearSearch} from "../../store/actions/articles";
 const FeedItem = ({article}) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [chosenArticle, setChosenArticle] = useState(false);
+    const [chosenArticle, setChosenArticle] = useState(null);
 
     useEffect(() => {
         if (chosenArticle) {

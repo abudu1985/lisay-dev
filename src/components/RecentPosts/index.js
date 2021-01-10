@@ -54,6 +54,7 @@ const RecentPosts = (props) => {
     const searchTag = useSelector(getSearchTag);
     const [timer, setTimer] = useState(0);
     const [noArticles, setNoArticles] = useState(false);
+
     useEffect(() => {
         const interval = setInterval(
             () => {
@@ -67,7 +68,6 @@ const RecentPosts = (props) => {
         }
         return () => clearInterval(interval);
     }, [timer, publishedArticles, searchString]);
-
 
     const resetSearch = () => {
         dispatch(clearSearch());

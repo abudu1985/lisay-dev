@@ -4,9 +4,13 @@ import './style.css';
 
 const ScrollArrow = ({point}) => {
     const [showScroll, setShowScroll] = useState(false);
+
     useEffect(() => {
-        return () => { window.removeEventListener('scroll', checkScrollTop) }
-    }, []);
+        window.addEventListener('scroll', checkScrollTop);
+        return function cleanup() {
+            window.removeEventListener('scroll', checkScrollTop)
+        }
+    });
 
     const checkScrollTop = () => {
         if (!showScroll && window.pageYOffset > point) {
@@ -19,8 +23,6 @@ const ScrollArrow = ({point}) => {
     const scrollTop = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
-
-    window.addEventListener('scroll', checkScrollTop);
 
     return (
         <button
