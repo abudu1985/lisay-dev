@@ -12,8 +12,8 @@ export default function(state = INITIAL_STATE, action) {
         case types.ADD_ARTICLE:
             return {...state, articles: [...state.articles, action.payload], isLoading: false};
         case types.EDIT_ARTICLE:
-            const withoutEditedArticle = state.articles.filter(t => t.id !== action.payload.id);
-            return {...state, articles: [...withoutEditedArticle, action.payload], isLoading: false};
+            const articlesWithoutEdited = state.articles.filter(t => t.id !== action.payload.id);
+            return {...state, articles: [...articlesWithoutEdited, action.payload], isLoading: false};
         case types.GET_ARTICLES:
             return {...state, articles: action.payload, isLoading: false};
         case types.DELETE_ARTICLE:

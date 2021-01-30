@@ -14,7 +14,7 @@
     border-radius: 7px;
     margin-top: 15px;
     margin-bottom: 12px;
-    padding: 15px;
+    /*padding: 15px;*/
 }
 
 .tagLabelsBlock {
@@ -38,15 +38,20 @@
     font-size: 12px;
 }
 
-.readArticlePreviewImgWrap{
+.readArticlePreviewImgWrap {
     width: 100%;
     max-height: 400px;
     display: flex;
     justify-content: center;
 }
 
-.readArticlePreviewImgChild{
+.readArticlePreviewImgChild {
     width: 100%;
     max-width: 420px;
     height: auto;
+}
+
+.noOutline {
+    outline:0 none;
+    border: none;
 }

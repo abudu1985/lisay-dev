@@ -7,15 +7,23 @@
   white-space: nowrap;
   text-align: center;
 }
+
 .roundbutton.roundbutton-green {
   background: #1db731;
 }
+
 .roundbutton.roundbutton-red {
   background: #e94625;
 }
+
+.roundbutton.roundbutton-pale {
+  background: #dbe2e5;
+}
+
 .roundbutton:hover:enabled {
   filter: brightness(1.1);
 }
+
 .roundbutton:disabled {
   background: #dbe2e5;
 }

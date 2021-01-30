@@ -21,7 +21,8 @@ const PrevNextBlock = ({currentId, goToArticle}) => {
         if(loadingName) return;
         setLoadingName('prev');
     };
-    const handleIncrement = () => {
+    const handleIncrement = event => {
+        event.preventDefault();
         if(loadingName) return;
         setLoadingName('next');
     };
@@ -30,21 +31,23 @@ const PrevNextBlock = ({currentId, goToArticle}) => {
         <div className="article-save-row">
             <Container>
                 <Row justify="around">
-                    <Col xs={3}>
+                    <Col xs={6}>
                         {(prev || prev === 0) &&
                         <RoundButton
                             innerHtml={loadingName && loadingName === 'prev' ? <Spinner/> : "< PREV"}
                             color={'green'}
                             onClick={handleDecrement}
+                            additionalClass={"noOutline"}
                         />
                         }
                     </Col>
-                    <Col xs={3}>
+                    <Col xs={6}>
                         {next &&
                         <RoundButton
                             innerHtml={loadingName && loadingName === 'next' ? <Spinner/> : "NEXT >"}
-                            onClick={handleIncrement}
+                            onClick={e => handleIncrement(e)}
                             color={'green'}
+                            additionalClass={"noOutline"}
                         />
                         }
                     </Col>
