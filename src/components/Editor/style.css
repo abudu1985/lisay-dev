@@ -30,3 +30,11 @@
     margin-top: 0.5em;
     font-size: small;
 }
+
+.ql-editor pre.ql-syntax{
+    overflow: auto!important;
+}
+
+.ql-editor pre {
+    white-space: pre!important;
+}

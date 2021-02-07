@@ -2,6 +2,7 @@
     cursor: pointer;
     color: #1a75cc;
     display: inline-block;
+    border-radius: 3px;
 }
 
 .articlesTagsElement:hover {
