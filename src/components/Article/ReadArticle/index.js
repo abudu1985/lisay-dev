@@ -1,69 +1,67 @@
 import React, {useEffect} from 'react'
-import {useSelector} from "react-redux";
+import {connect, useSelector} from "react-redux";
+import {useHistory} from 'react-router-dom';
+import {branch, compose, lifecycle, pure, renderComponent, withProps, withState} from 'recompose';
+
 import './style.css';
 import withGlobalLayout from "../../hoc/withGlobalLayout";
-import LightBoxImage from "../../LightBoxImage";
 import {getSearchString, getSearchTag} from "../../../store/selectors/searchSelectors";
-import PrevNextBlock from "../PrevNextBlock";
-import QuillBodyBlock from "./QuillBodyBlock";
+import { getArticles } from "../../../store/selectors/articlesSelectors";
+import ArticleBodyBlock from "./ArdicleBodyBlock";
+import Preloader from "../../Preloader";
+import NotFound from "../../NotFound";
 
 const scrollWindowToTop = () => window.scrollTo(0, 0);
 
-const ReadArticle = ({location, history}) => {
-    const {state: {data, data: article}} = location;
+const ReadArticle = ({article,seconds}) => {
     const searchString = useSelector(getSearchString);
     const searchTag = useSelector(getSearchTag);
+    const history = useHistory();
 
     useEffect(() => {
     if (searchString.trim().length || searchTag.trim().length) {
             history.push({
                 pathname: `/`,
-                state: {data}
+                state: {}
             })
         }
-    }, [history, location, searchTag, searchString]);
-
-    const goToArticle = nextArticle => {
-        history.push({
-            pathname: `/article/${nextArticle.slug}`,
-            state: {data: nextArticle}
-        })
-    };
+    }, [article, searchTag, searchString, seconds]);
 
     scrollWindowToTop();
-    if (!article) {
-        history.replace('/')
-    }
+    return article ? <ArticleBodyBlock article={article}/> : <NotFound />
 
-    return (
-        <div>
-            <LightBoxImage
-                imageClass="readArticlePreviewImgChild"
-                imageSrc={article.articlePreview}
-                wrapperClass="readArticlePreviewImgWrap"
-            />
-            <br/>
-            <div className="readArticleTitle">
-                {article.title}
-            </div>
-            <br/>
-            <div className="readArticleDescription">
-                {article.description}
-            </div>
-            <div className="articleDateBlock">
-                Posted on {article.postedOn}
-            </div>
-            <QuillBodyBlock data={article.body}/>
-            <div className="tagLabelsBlock">
-                {
-                    article.tagList.map((tag, index) => {
-                        return (<span className="tagLabel" key={index}>{tag}</span>)
-                    })
-                }
-            </div>
-            <PrevNextBlock currentId={article.id} goToArticle={goToArticle}/>
-        </div>
-    )
 };
 
-export default withGlobalLayout(ReadArticle);
+const mapStateToProps = state => {
+    return {
+        articles: getArticles(state)
+    };
+};
+
+export default compose(
+    connect(mapStateToProps),
+    withProps(({articles, location}) => {
+        const currentPath = location.pathname;
+        let slug = currentPath.replace('/article/' , '');
+        const article = articles.find(ar => ar.slug === slug);
+        return {article};
+    }),
+    withState('seconds', 'updateSeconds', 0),
+    lifecycle({
+        componentDidMount() {
+            const { seconds, updateSeconds} = this.props;
+            setTimeout(
+                () => {
+                    updateSeconds(seconds + 1);
+                },
+                4000,
+            );
+        }
+    }),
+    pure,
+    branch(
+    ({ article, seconds }) => !article && !seconds,
+    renderComponent(Preloader)
+    ),
+    withGlobalLayout
+)(ReadArticle);

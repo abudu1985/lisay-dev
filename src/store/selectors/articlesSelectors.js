@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import currentUserAuth from "./userSelectors";
 
 export const getArticles = state => state.articlesReducer.articles;
 
