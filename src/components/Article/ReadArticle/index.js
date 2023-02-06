@@ -41,7 +41,7 @@ const ReadArticle = ({ article, seconds }) => {
         state: {},
       });
     }
-  }, [searchTag, searchString, seconds]);
+  }, [searchTag, searchString, seconds, history]);
 
   return article ? <ArticleBodyBlock article={article} /> : <NotFound />;
 };

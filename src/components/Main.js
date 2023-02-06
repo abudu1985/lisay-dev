@@ -5,7 +5,6 @@ import Login from "./Login";
 import Loader from "./Preloader";
 
 const Main = ({ auth }) => {
-  console.log('auth -> ', auth);
   return (
     <div>
       {!auth.isLoaded ? <Loader /> : !auth.isEmpty ? <Home /> : <Login />}
@@ -15,7 +14,7 @@ const Main = ({ auth }) => {
 
 function mapStateToProps(state) {
   return {
-    auth: state.firebaseReducer.auth
+    auth: state.firebaseReducer.auth,
   };
 }
 
