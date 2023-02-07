@@ -55,3 +55,10 @@
     outline:0 none;
     border: none;
 }
+
+.prevNextBlock {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}

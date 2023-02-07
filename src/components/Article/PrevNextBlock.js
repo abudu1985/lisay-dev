@@ -7,14 +7,16 @@ import Spinner from "../Spinner";
 
 const PrevNextBlock = ({ currentId, goToArticle }) => {
   const articles = useSelector(getPublishedArticles);
+  console.log("qwe  ~ articles", articles);
   const [loadingName, setLoadingName] = useState("");
   const currentArticleIndex = articles.findIndex(
     (post) => post.id === currentId
   );
   const prev = currentArticleIndex - 1 >= 0 ? currentArticleIndex - 1 : null;
+  console.log("qwe  ~ prev", prev);
   const next =
     currentArticleIndex + 1 < articles.length ? currentArticleIndex + 1 : null;
-
+  console.log("qwe  ~ next", next);
   useEffect(() => {
     if (loadingName)
       goToArticle(articles[loadingName === "next" ? next : prev]);
@@ -34,35 +36,29 @@ const PrevNextBlock = ({ currentId, goToArticle }) => {
   };
 
   return (
-    <div className="article-save-row">
-      <Container>
-        <Row justify="around">
-          <Col xs={6}>
-            {(prev || prev === 0) && (
-              <RoundButton
-                innerHtml={
-                  loadingName && loadingName === "prev" ? <Spinner /> : "< PREV"
-                }
-                color={"green"}
-                onClick={handleDecrement}
-                additionalClass={"noOutline"}
-              />
+    <div className="prevNextBlock">
+      <div>
+        {(prev || prev === 0) && (
+          <button onClick={handleDecrement} className="btn-switch">
+            {loadingName && loadingName === "prev" ? (
+              <Spinner />
+            ) : (
+              `< ${articles[prev].title}`
             )}
-          </Col>
-          <Col xs={6}>
-            {next && (
-              <RoundButton
-                innerHtml={
-                  loadingName && loadingName === "next" ? <Spinner /> : "NEXT >"
-                }
-                onClick={(e) => handleIncrement(e)}
-                color={"green"}
-                additionalClass={"noOutline"}
-              />
+          </button>
+        )}
+      </div>
+      <div>
+        {next && (
+          <button onClick={handleIncrement} className="btn-switch">
+            {loadingName && loadingName === "next" ? (
+              <Spinner />
+            ) : (
+              `${articles[next].title} >`
             )}
-          </Col>
-        </Row>
-      </Container>
+          </button>
+        )}
+      </div>
     </div>
   );
 };
