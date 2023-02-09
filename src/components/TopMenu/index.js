@@ -1,6 +1,4 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import faBars from "@fortawesome/fontawesome-free-solid/faBars";
 import { NavLink, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -11,6 +9,8 @@ import { signout } from "../../store/actions/auth";
 import { getAllArtiles, setSearchByString } from "../../store/actions/articles";
 import { getSearchString } from "../../store/selectors/searchSelectors";
 import useWindowSize from "../../utils/useWindowSize";
+import barsSolid from "../../services/bars-solid.svg";
+import * as Constant from "../../utils/constants";
 
 import "./index.css";
 
@@ -51,7 +51,7 @@ const TopMenu = (props) => {
     <div>
       <div className={top_menu_class}>
         <Lead text="" />
-        {width > 600 ? (
+        {width > Constant.SMALL_SIZE ? (
           <div className="right">
             <form onSubmit={handleSearchSubmit}>
               <input
@@ -115,8 +115,9 @@ const TopMenu = (props) => {
             </form>
           </div>
         )}
-        <FontAwesomeIcon
-          icon={faBars}
+        <img
+          src={barsSolid}
+          alt="SVG as an image"
           className="top-menu-icon"
           onClick={setToggleTopMenuClass}
         />

@@ -1,13 +1,13 @@
 .arrowItem {
     display: none;
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 30px;
     z-index: 99;
     font-size: 26px;
     border: none;
     outline: none;
-    background-color: #b6b9bd;
+    background-color: #4ab8ff;
     color: white;
     cursor: pointer;
     padding: 3px 10px;
@@ -20,7 +20,7 @@
 }
 
 .arrowItem:hover {
-    background-color: #6b6d70;
+    background-color: #2196F3;
 }
 
 @keyframes fadeIn {

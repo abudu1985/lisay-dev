@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPublishedArticles } from "../../store/selectors/articlesSelectors";
 import {
@@ -7,10 +7,11 @@ import {
 } from "../../store/selectors/searchSelectors";
 import withGlobalLayout from "../hoc/withGlobalLayout";
 import { clearSearch } from "../../store/actions/articles";
-import useWindowSize from "../../utils/useWindowSize";
 import Preloader from "../Preloader";
-import FeedItem from "./FeedItem";
-import GridGenerator from "./GridGenerator";
+import GridContent from "./GridContent";
+import ScrollContent from "./ScrollContent";
+import useLocalStorage from "../../utils/useLocalStorage";
+import * as Constants from "../../utils/constants";
 
 import "./style.css";
 
@@ -40,7 +41,13 @@ const RecentPosts = (props) => {
   const searchTag = useSelector(getSearchTag);
   const [timer, setTimer] = useState(0);
   const [noArticles, setNoArticles] = useState(false);
-  const { width } = useWindowSize();
+  const [renderPostsMode, setRenderPostsMode] =
+    useLocalStorage("renderPostsMode");
+
+  useEffect(() => {
+    if (!renderPostsMode)
+      setRenderPostsMode(JSON.stringify(Constants.GRID_MODE));
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,7 +65,10 @@ const RecentPosts = (props) => {
     setNoArticles(false);
   };
 
-  const getNumOfColumns = () => (width < 1200 ? 2 : 3);
+  const renderPostsModeEnum = {
+    [Constants.GRID_MODE]: <GridContent articles={publishedArticles} />,
+    [Constants.VERTICAL_MODE]: <ScrollContent articles={publishedArticles} />,
+  };
 
   if (searchString)
     publishedArticles = findBySearchString(publishedArticles, searchString);
@@ -66,7 +76,7 @@ const RecentPosts = (props) => {
     publishedArticles = findBySearchTag(publishedArticles, searchTag);
   if (noArticles && searchString) {
     return (
-      <Fragment>
+      <>
         <div id="reset-centered">
           <h2>
             No articles found{" "}
@@ -76,20 +86,15 @@ const RecentPosts = (props) => {
           </h2>
         </div>
         <ResetButton resetSearch={resetSearch} />
-      </Fragment>
+      </>
     );
   }
+
   return publishedArticles.length ? (
-    <Fragment>
+    <>
       {(searchString || searchTag) && <ResetButton resetSearch={resetSearch} />}
-      {
-        <GridGenerator cols={getNumOfColumns()}>
-          {publishedArticles.map((article, index) => (
-            <FeedItem article={article} key={index} />
-          ))}
-        </GridGenerator>
-      }
-    </Fragment>
+      {renderPostsModeEnum[renderPostsMode]}
+    </>
   ) : (
     <Preloader />
   );

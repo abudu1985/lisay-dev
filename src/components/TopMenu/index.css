@@ -38,13 +38,17 @@
 }
 
 .top-menu .top-menu-icon {
-    padding: 10px;
+    padding: 9px;
     position: absolute;
     top: 0;
     right: 0;
     display: none;
-    height: 40px;
-    width: auto;
+    height: 45px;
+    margin: 5px;
+}
+
+.top-menu-icon:hover {
+    background-color: #2196F3;
 }
 
 @media screen and (max-width: 750px) {

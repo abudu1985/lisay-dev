@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-grid-system";
-import { splitEvery } from "../../utils/functions";
+import { splitEvery } from "../../../utils/functions";
 
 const GridGenerator = ({ cols, children }) => {
   const rows = splitEvery(React.Children.toArray(children), cols);

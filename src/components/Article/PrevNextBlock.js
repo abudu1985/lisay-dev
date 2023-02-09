@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Container, Row, Col } from "react-grid-system";
 import { getPublishedArticles } from "../../store/selectors/articlesSelectors";
-import RoundButton from "../RoundButton";
 import Spinner from "../Spinner";
 
 const PrevNextBlock = ({ currentId, goToArticle }) => {
   const articles = useSelector(getPublishedArticles);
-  console.log("qwe  ~ articles", articles);
   const [loadingName, setLoadingName] = useState("");
   const currentArticleIndex = articles.findIndex(
     (post) => post.id === currentId
   );
   const prev = currentArticleIndex - 1 >= 0 ? currentArticleIndex - 1 : null;
-  console.log("qwe  ~ prev", prev);
   const next =
     currentArticleIndex + 1 < articles.length ? currentArticleIndex + 1 : null;
-  console.log("qwe  ~ next", next);
   useEffect(() => {
     if (loadingName)
       goToArticle(articles[loadingName === "next" ? next : prev]);
