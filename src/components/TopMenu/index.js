@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -14,7 +14,7 @@ import * as Constant from "../../utils/constants";
 
 import "./index.css";
 
-const TopMenu = (props) => {
+const TopMenu = ({ history }) => {
   const [menuClass, setMenuClass] = useState("");
   const [searchString, setSearchString] = useState("");
   const isLoggedIn = useSelector(isLoggedUser);
@@ -40,11 +40,12 @@ const TopMenu = (props) => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     dispatch(setSearchByString(searchString));
+    history.push("/");
   };
 
   async function logout() {
     dispatch(signout());
-    props.history.push("/");
+    history.push("/");
   }
 
   return (
@@ -62,47 +63,41 @@ const TopMenu = (props) => {
                 value={searchString}
               />
             </form>
+            <>
+              <Item location={"/rezume"} text="CV" />
+            </>
             {isLoggedIn && (
-              <Fragment>
-                <NavLink to="/dashboard" className="top-menu-item">
-                  Dashboard
-                </NavLink>
-                <NavLink to="/articles/new" className="top-menu-item">
-                  New Post
-                </NavLink>
-                <NavLink to="/quote" className="top-menu-item">
-                  Quote
-                </NavLink>
+              <>
+                <Item location={"/dashboard"} text="Dashboard" />
+                <Item location={"/articles/new"} text="New Post" />
+                <Item location={"/quote"} text="Quote" />
+
                 <div className="top-menu-item" onClick={logout}>
                   Logout
                 </div>
-              </Fragment>
+              </>
             )}
             {!isLoggedIn && (
-              <Fragment>
+              <>
                 <Item location={"/login"} text="Login" />
-              </Fragment>
+              </>
             )}
           </div>
         ) : (
           <div className="right">
             {isLoggedIn && (
-              <Fragment>
-                <NavLink to="/dashboard" className="top-menu-item">
-                  Dashboard
-                </NavLink>
-                <NavLink to="/articles/new" className="top-menu-item">
-                  New Post
-                </NavLink>
+              <>
+                <Item location={"/dashboard"} text="Dashboard" />
+                <Item location={"/articles/new"} text="New Post" />
                 <div className="top-menu-item" onClick={logout}>
                   Logout
                 </div>
-              </Fragment>
+              </>
             )}
             {!isLoggedIn && (
-              <Fragment>
+              <>
                 <Item location={"/login"} text="Login" />
-              </Fragment>
+              </>
             )}
             <form onSubmit={handleSearchSubmit}>
               <input

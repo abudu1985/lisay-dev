@@ -23,9 +23,9 @@ const Toggle = ({
   const switchClass = classNames("switch ", { switchHidden: !show });
 
   return (
-    <label class={switchClass}>
+    <label className={switchClass}>
       <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
-      <span class={sliderClass}></span>
+      <span className={sliderClass}></span>
     </label>
   );
 };

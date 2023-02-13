@@ -65,9 +65,12 @@ const RecentPosts = (props) => {
     setNoArticles(false);
   };
 
-  const renderPostsModeEnum = {
-    [Constants.GRID_MODE]: <GridContent articles={publishedArticles} />,
-    [Constants.VERTICAL_MODE]: <ScrollContent articles={publishedArticles} />,
+  const renderArticlesByMode = (data, mode) => {
+    const renderPostsModeEnum = {
+      [Constants.GRID_MODE]: <GridContent articles={data} />,
+      [Constants.VERTICAL_MODE]: <ScrollContent articles={data} />,
+    };
+    return renderPostsModeEnum[mode];
   };
 
   if (searchString)
@@ -93,7 +96,7 @@ const RecentPosts = (props) => {
   return publishedArticles.length ? (
     <>
       {(searchString || searchTag) && <ResetButton resetSearch={resetSearch} />}
-      {renderPostsModeEnum[renderPostsMode]}
+      {renderArticlesByMode(publishedArticles, renderPostsMode)}
     </>
   ) : (
     <Preloader />

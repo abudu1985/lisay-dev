@@ -4,29 +4,28 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
-import "./css/index.css";
 import App from "./components/App";
-
-// ENHANCING STORE WITH FIREBASE
 import { reactReduxFirebase } from "react-redux-firebase";
 import firebase from "./services/firebase";
-
 import reducers from "./store/reducers";
 
-const createStoreWithFirebase = compose(reactReduxFirebase(firebase))(
-    createStore
+import "./css/index.css";
+
+// ENHANCING STORE WITH FIREBASE
+const createStoreWithFirebase = compose(reactReduxFirebase(firebase.firebase))(
+  createStore
 );
 const store = createStoreWithFirebase(
-    reducers,
-    {},
-    applyMiddleware(reduxThunk)
+  reducers,
+  {},
+  applyMiddleware(reduxThunk)
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>,
-    document.getElementById("root")
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
 );

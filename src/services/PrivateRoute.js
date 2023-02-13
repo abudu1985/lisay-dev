@@ -1,15 +1,15 @@
 import React from "react";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { isLoggedUser } from "../store/selectors/userSelectors";
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-    const isLoggedIn = useSelector(isLoggedUser);
+  const isLoggedIn = useSelector(isLoggedUser);
 
   return (
     <Route
       {...rest}
-      render={routeProps =>
+      render={(routeProps) =>
         !!isLoggedIn ? (
           <RouteComponent {...routeProps} />
         ) : (
@@ -20,5 +20,4 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   );
 };
 
-
-export default PrivateRoute
+export default PrivateRoute;

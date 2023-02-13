@@ -13,16 +13,19 @@ const Sidebar = ({ width }) => {
   const [catSrc, setCatSrc] = useState("");
 
   useEffect(() => {
-    sendQuoteRequest("/quotes/random", "GET", {}, false)
-      .then((data) => {
-        setAffirmation(data.text);
-      })
-      .catch((err) => {
-        console.log("Error when get random quote -> ", err);
-        const randomAffirmation =
-          affirmations[Math.floor(Math.random() * affirmations.length)];
-        setAffirmation(randomAffirmation);
-      });
+    // sendQuoteRequest("/quotes/random", "GET", {}, false)
+    //   .then((data) => {
+    //     setAffirmation(data.text);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error when get random quote -> ", err);
+    //     const randomAffirmation =
+    //       affirmations[Math.floor(Math.random() * affirmations.length)];
+    //     setAffirmation(randomAffirmation);
+    //   });
+    const randomAffirmation =
+      affirmations[Math.floor(Math.random() * affirmations.length)];
+    setAffirmation(randomAffirmation);
     const ts = new Date().getTime();
     const src = ` http://thecatapi.com/api/images/get?format=src&type=gif&timestamp=${ts}`;
     setCatSrc(src);
