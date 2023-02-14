@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Item from "./item";

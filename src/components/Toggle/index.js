@@ -16,9 +16,6 @@ const Toggle = ({
     onClick(!isToggled);
   };
 
-  // const sliderClass = `slider round ${vertical ? "vertical" : ""}`;
-  // const switchClass = `switch ${show ? "" : "switchHidden"}`;
-
   const sliderClass = classNames("slider round", { vertical: isVertical });
   const switchClass = classNames("switch ", { switchHidden: !show });
 

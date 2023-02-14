@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./style.css";
 import Spinner from "../Spinner";
 import RoundButton from "../RoundButton";
 import withToastProvider from "../../components/Toaster/withToastProvider";
 import useToast from "../../components/Toaster/useToast";
 import Firestore from "../../services/db/articleFunctions";
 import { getArticles } from "../../store/selectors/articlesSelectors";
+import Table from "../../components/Table";
+
+import "./style.css";
 
 const Dashboard = ({ history }) => {
   const [tableData, setTableData] = useState([]);
@@ -41,72 +43,62 @@ const Dashboard = ({ history }) => {
       });
   }
 
+  const columns = [
+    {
+      heading: "Title",
+      value: ({ title }) => title,
+    },
+    {
+      heading: "Tags",
+      value: ({ tagList }) => {
+        return tagList.map((tag, index) => (
+          <span key={`${tag}${index}`}>{tag}&nbsp;</span>
+        ));
+      },
+    },
+    {
+      heading: "Published",
+      value: ({ isPublished }) => {
+        return (
+          <span className={isPublished ? "published-blue" : "published-red"}>
+            {isPublished ? <span>&#10004;</span> : <span>&#x2716;</span>}
+          </span>
+        );
+      },
+    },
+    {
+      heading: "Preview",
+      value: ({ articlePreview }) => (
+        <img className="dashboardPreviewImage" src={articlePreview} alt="" />
+      ),
+    },
+    {
+      heading: "Actions",
+      value: (doc) => (
+        <div className="dashboardActionsCell">
+          <RoundButton
+            innerHtml={"Edit"}
+            onClick={() => onEdit(doc)}
+            color={"green"}
+          />
+          <RoundButton
+            innerHtml={"Delete"}
+            onClick={() => onDelete(doc.id)}
+            color={"red"}
+          />
+        </div>
+      ),
+    },
+  ];
+
   return (
-    <div>
-      {tableData.length ? (
-        <table>
-          <caption>A summary of articles</caption>
-          <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Tags</th>
-              <th scope="col">Published</th>
-              <th scope="col">Preview</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((doc) => (
-              <tr key={doc.title}>
-                <th scope="row">{doc.title}</th>
-                <td>
-                  {doc.tagList.map((tag, index) => (
-                    <span key={`${tag}${index}`}>{tag}&nbsp;</span>
-                  ))}
-                </td>
-
-                <th scope="row">
-                  <span
-                    className={
-                      doc.isPublished ? "published-blue" : "published-red"
-                    }
-                  >
-                    {doc.isPublished ? (
-                      <span>&#10004;</span>
-                    ) : (
-                      <span>&#x2716;</span>
-                    )}
-                  </span>
-                </th>
-                <th scope="row">
-                  <img
-                    className="dashboardPreviewImage"
-                    src={doc.articlePreview}
-                    alt=""
-                  />
-                </th>
-
-                <th scope="row">
-                  <RoundButton innerHtml={"Edit"} onClick={() => onEdit(doc)} />
-                  <RoundButton
-                    innerHtml={"Delete"}
-                    onClick={() => onDelete(doc.id)}
-                    color={"red"}
-                  />
-                </th>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row" colSpan="5">{`Total  ${tableData.length}`}</th>
-            </tr>
-          </tfoot>
-        </table>
+    <>
+      {tableData.length > 0 ? (
+        <Table data={tableData} columns={columns} />
       ) : (
         <Spinner />
       )}
-    </div>
+    </>
   );
 };
 

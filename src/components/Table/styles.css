@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+    margin: 2rem auto;
+  }
+  
+table th, table td {
+    border: 1px solid #c0cfcf;
+    padding: 8px;
+}
+
+.tableTotalRight {
+    text-align: right;
+    width: 95%;
+    font-size: 18px;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getPublishedArticles } from "../../store/selectors/articlesSelectors";
 import Spinner from "../Spinner";
+import RoundButton from "../RoundButton";
 
 const PrevNextBlock = ({ currentId, goToArticle }) => {
   const articles = useSelector(getPublishedArticles);
@@ -34,24 +35,30 @@ const PrevNextBlock = ({ currentId, goToArticle }) => {
     <div className="prevNextBlock">
       <div>
         {(prev || prev === 0) && (
-          <button onClick={handleDecrement} className="btn-switch">
-            {loadingName && loadingName === "prev" ? (
-              <Spinner />
-            ) : (
-              `< ${articles[prev].title}`
-            )}
-          </button>
+          <RoundButton
+            innerHtml={
+              loadingName && loadingName === "prev" ? (
+                <Spinner />
+              ) : (
+                `< ${articles[prev].title}`
+              )
+            }
+            onClick={handleDecrement}
+          />
         )}
       </div>
       <div>
         {next && (
-          <button onClick={handleIncrement} className="btn-switch">
-            {loadingName && loadingName === "next" ? (
-              <Spinner />
-            ) : (
-              `${articles[next].title} >`
-            )}
-          </button>
+          <RoundButton
+            innerHtml={
+              loadingName && loadingName === "next" ? (
+                <Spinner />
+              ) : (
+                `${articles[next].title} >`
+              )
+            }
+            onClick={handleIncrement}
+          />
         )}
       </div>
     </div>

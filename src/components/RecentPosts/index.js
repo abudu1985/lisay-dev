@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import Preloader from "../Preloader";
+import GridContent from "./GridContent";
+import ScrollContent from "./ScrollContent";
+import useLocalStorage from "../../utils/useLocalStorage";
+import * as Constants from "../../utils/constants";
 import { getPublishedArticles } from "../../store/selectors/articlesSelectors";
 import {
   getSearchString,
@@ -7,11 +13,7 @@ import {
 } from "../../store/selectors/searchSelectors";
 import withGlobalLayout from "../hoc/withGlobalLayout";
 import { clearSearch } from "../../store/actions/articles";
-import Preloader from "../Preloader";
-import GridContent from "./GridContent";
-import ScrollContent from "./ScrollContent";
-import useLocalStorage from "../../utils/useLocalStorage";
-import * as Constants from "../../utils/constants";
+import RoundButton from "../RoundButton";
 
 import "./style.css";
 
@@ -28,9 +30,7 @@ const findBySearchTag = (publishedArticles, searchTag) =>
 
 const ResetButton = ({ resetSearch }) => (
   <div id="reset-centered">
-    <button onClick={() => resetSearch()} className="btn-switch">
-      Reset search
-    </button>
+    <RoundButton innerHtml={"Reset search"} onClick={resetSearch} />
   </div>
 );
 

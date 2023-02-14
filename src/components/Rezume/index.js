@@ -44,7 +44,16 @@ const Rezume = (props) => {
               <h1 id="user-name">Igor Luchko</h1>
               <br />
               <p id="bio">JavaScript, React developer.</p>
-              <p id="email">📧 luchkoigor85@gmail.com 📞 0978968663</p>
+              <p id="email">
+                <span role="img" aria-label="Love">
+                  📧
+                </span>
+                luchkoigor85@gmail.com{" "}
+                <span role="img" aria-label="Love">
+                  📞
+                </span>{" "}
+                0978968663
+              </p>
             </div>
           </section>
 
@@ -84,8 +93,19 @@ const Rezume = (props) => {
           <section class="section--page">
             <h2>Skills & Qualifications</h2>
             <ul id="qualifications--list">
-              <li>✔️ 5 Years experience with front development</li>
-              <li>✔️ 2 Years experience with backend development.</li>
+              <li>
+                <span role="img" aria-label="Love">
+                  ✔️
+                </span>{" "}
+                5 Years experience with front development
+              </li>
+              <li>
+                {" "}
+                <span role="img" aria-label="Love">
+                  ✔️
+                </span>{" "}
+                2 Years experience with backend development.
+              </li>
             </ul>
           </section>
 
@@ -110,7 +130,12 @@ const Rezume = (props) => {
 
             <div class="line-break"></div>
             <div class="card--work-history">
-              <strong>📌 Frontend developer at Infopulse</strong>
+              <strong>
+                <span role="img" aria-label="Love">
+                  📌
+                </span>{" "}
+                Frontend developer at Infopulse
+              </strong>
               <p>5/2021 - 2/2023</p>
               <p>
                 Developing new version of the audit platform (Stack:
@@ -125,7 +150,10 @@ const Rezume = (props) => {
 
             <div class="card--work-history">
               <strong>
-                📌 Frontend developer at Siteplus (Newfold Digital Ukraine)
+                <span role="img" aria-label="Love">
+                  📌
+                </span>{" "}
+                Frontend developer at Siteplus (Newfold Digital Ukraine)
               </strong>
               <p>5/2019 - 5/2021</p>
               <p>
@@ -147,7 +175,12 @@ const Rezume = (props) => {
             <div class="line-break"></div>
 
             <div class="card--work-history">
-              <strong>📌 Frontend developer at Cosmonova</strong>
+              <strong>
+                <span role="img" aria-label="Love">
+                  📌
+                </span>{" "}
+                Frontend developer at Cosmonova
+              </strong>
               <p>3/2019 - 5/2019</p>
               <p>
                 Creating frontend part and admin panel from scratch for new site
@@ -165,7 +198,12 @@ const Rezume = (props) => {
             <div class="line-break"></div>
 
             <div class="card--work-history">
-              <strong>📌 Full Stack Developer at Cogniance (Star)</strong>
+              <strong>
+                <span role="img" aria-label="Love">
+                  📌
+                </span>{" "}
+                Full Stack Developer at Cogniance (Star)
+              </strong>
               <p>10/2018 - 2/2019</p>
               <p>
                 Worked with company`s inner projects (Stack:
@@ -179,7 +217,12 @@ const Rezume = (props) => {
             <div class="line-break"></div>
 
             <div class="card--work-history">
-              <strong>📌 PHP/JS Developer at Skynix</strong>
+              <strong>
+                <span role="img" aria-label="Love">
+                  📌
+                </span>{" "}
+                PHP/JS Developer at Skynix
+              </strong>
               <p>05/2017 - 10/2018</p>
               <p>Maintain of actual projects: (Stack: React/redux/Node/PHP)</p>
               <ul>

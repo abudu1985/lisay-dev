@@ -1,29 +1,58 @@
+.btn-login, .roundbutton {
+  padding: 1em 2em;
+  border-radius: 32px;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid #29b1cc;
+ }
+  .btn-login:hover, .roundbutton:hover {
+    cursor: pointer; }
+
+.btn-login, .roundbutton:hover {
+  background-color: #29b1cc;
+  color: #fff; 
+}
+
 .roundbutton {
-  background: #269ce9;
-  color: #fff;
-  height: 38px;
-  padding: 0px 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  text-align: center;
-}
+  background-color: #fff;
+  color: #29b1cc; }
 
-.roundbutton.roundbutton-green {
-  background: #1db731;
-}
+.btn-login:hover {
+  box-shadow: 0 10px 20px rgba(41, 177, 204, 0.3); }
 
-.roundbutton.roundbutton-red {
-  background: #e94625;
-}
+.btn-link {
+  color: #29b1cc;
+  border: none;
+  border-bottom: 1px solid #29b1cc;
+  padding: 0;
+  margin-left: 2em; }
+  .btn-link:hover {
+    border-bottom: none;
+    cursor: pointer; 
+  }
 
-.roundbutton.roundbutton-pale {
-  background: #dbe2e5;
-}
+  .roundbutton.roundbutton-red {
+    background: #e94625;
+    color: #fff; 
+    border: 2px solid #fff;
+  }
 
-.roundbutton:hover:enabled {
-  filter: brightness(1.1);
-}
+  .roundbutton.roundbutton-red:hover {
+    background: #8a1b05;
+    color: #fff; 
+  }
 
-.roundbutton:disabled {
-  background: #dbe2e5;
-}
+  .roundbutton.roundbutton-green {
+    background: #1db731;
+    color: #fff; 
+    border: 2px solid #fff;
+  }
+
+  .roundbutton.roundbutton-green:hover {
+    background: #0b5715;
+    color: #fff; 
+  }
+  
+  .roundbutton.roundbutton-pale {
+    background: #dbe2e5;
+  }

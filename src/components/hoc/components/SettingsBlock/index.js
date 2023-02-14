@@ -27,7 +27,6 @@ const SettingsBlock = () => {
       <div className="settingsIcon" onClick={handleClick}>
         <img
           src={gearSolid}
-          alt="SVG as an image"
           className={classNames("gearSolid ", { rotated: !!clickedGear })}
         />
       </div>

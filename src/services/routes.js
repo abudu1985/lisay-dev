@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import RecentPosts from "../components/RecentPosts";
+import Home from "../components/Home";
 import Login from "../components/Login";
 import Dashboard from "../components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
@@ -14,7 +14,7 @@ import Rezume from "../components/Rezume";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/" component={RecentPosts} exact />
+      <Route path="/" component={Home} exact />
       <Route exact path="/login" component={Login} />
       <Route path="/article/:slug" component={ReadArticle} />
       <Route path="/rezume" component={Rezume} />
