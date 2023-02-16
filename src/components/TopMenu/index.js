@@ -49,75 +49,75 @@ const TopMenu = ({ history }) => {
   }
 
   return (
-    <div>
-      <div className={top_menu_class}>
-        <Lead text="" />
-        {width > Constant.SMALL_SIZE ? (
-          <div className="right">
-            <form onSubmit={handleSearchSubmit}>
-              <input
-                type="text"
-                name="search"
-                placeholder="Search.."
-                onChange={handleSearchChange}
-                value={searchString}
-              />
-            </form>
+    <div className={top_menu_class}>
+      <Lead text="" />
+      {width > Constant.SMALL_SIZE ? (
+        <div className="right">
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              name="search"
+              placeholder="Search.."
+              onChange={handleSearchChange}
+              value={searchString}
+            />
+          </form>
+          <>
+            <Item location={"/rezume"} text="CV" />
+          </>
+          {isLoggedIn && (
+            <>
+              <Item location={"/dashboard"} text="Dashboard" />
+              <Item location={"/articles/new"} text="New Post" />
+              <Item location={"/quote"} text="Quote" />
+
+              <div className="top-menu-item" onClick={logout}>
+                Logout
+              </div>
+            </>
+          )}
+          {!isLoggedIn && (
+            <>
+              <Item location={"/login"} text="Login" />
+            </>
+          )}
+        </div>
+      ) : (
+        <div className="right">
+          {isLoggedIn && (
             <>
               <Item location={"/rezume"} text="CV" />
+              <Item location={"/dashboard"} text="Dashboard" />
+              <Item location={"/articles/new"} text="New Post" />
+              <div className="top-menu-item" onClick={logout}>
+                Logout
+              </div>
             </>
-            {isLoggedIn && (
-              <>
-                <Item location={"/dashboard"} text="Dashboard" />
-                <Item location={"/articles/new"} text="New Post" />
-                <Item location={"/quote"} text="Quote" />
-
-                <div className="top-menu-item" onClick={logout}>
-                  Logout
-                </div>
-              </>
-            )}
-            {!isLoggedIn && (
-              <>
-                <Item location={"/login"} text="Login" />
-              </>
-            )}
-          </div>
-        ) : (
-          <div className="right">
-            {isLoggedIn && (
-              <>
-                <Item location={"/dashboard"} text="Dashboard" />
-                <Item location={"/articles/new"} text="New Post" />
-                <div className="top-menu-item" onClick={logout}>
-                  Logout
-                </div>
-              </>
-            )}
-            {!isLoggedIn && (
-              <>
-                <Item location={"/login"} text="Login" />
-              </>
-            )}
-            <form onSubmit={handleSearchSubmit}>
-              <input
-                type="text"
-                name="search"
-                placeholder="Search.."
-                onChange={handleSearchChange}
-                value={searchString}
-              />
-            </form>
-          </div>
-        )}
-        <img
-          src={barsSolid}
-          alt="SVG as an image"
-          className="top-menu-icon"
-          onClick={setToggleTopMenuClass}
-        />
-        <div className="clear-fix" />
-      </div>
+          )}
+          {!isLoggedIn && (
+            <>
+              <Item location={"/rezume"} text="CV" />
+              <Item location={"/login"} text="Login" />
+            </>
+          )}
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              name="search"
+              placeholder="Search.."
+              onChange={handleSearchChange}
+              value={searchString}
+            />
+          </form>
+        </div>
+      )}
+      <img
+        src={barsSolid}
+        alt="SVG as an image"
+        className="top-menu-icon"
+        onClick={setToggleTopMenuClass}
+      />
+      <div className="clear-fix" />
     </div>
   );
 };

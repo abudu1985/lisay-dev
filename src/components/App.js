@@ -5,12 +5,10 @@ import Routes from "../services/routes";
 
 const App = () => {
   return (
-    <div className="">
-        <Router>
-            <TopMenu/>
-            <Routes/>
-        </Router>
-    </div>
+    <Router>
+      <TopMenu />
+      <Routes />
+    </Router>
   );
 };
 
