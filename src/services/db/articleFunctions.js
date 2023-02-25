@@ -23,6 +23,7 @@ class Firestore {
   }
 
   updateArticle(article) {
+    if (!article.id) return;
     return this.db.doc(`articles/${article.id}`).set(article);
   }
 

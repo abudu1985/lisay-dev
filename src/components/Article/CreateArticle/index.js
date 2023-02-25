@@ -27,7 +27,7 @@ const CreateArticle = () => {
 
     Firestore.addArticle(article)
       .then((ref) => {
-        dispatch({ type: "ADD_ARTICLE", payload: article });
+        dispatch({ type: "ADD_ARTICLE", payload: { ...article, id: ref.id } });
         toast.add("Article was created!", "success");
       })
       .catch((error) => {

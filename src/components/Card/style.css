@@ -4,8 +4,6 @@
     transition: all 0.3s ease;
     border-radius: 7px;
     box-shadow: 2px 3px 4px rgb(0 0 0 / 30%);
-    border-left: 1px solid #e6e6f1;
-    border-top: 1px solid #e6e6f1;
 }
 
 .card:hover {

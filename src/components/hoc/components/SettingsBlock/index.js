@@ -5,6 +5,7 @@ import gearSolid from "../../../../services/gear-solid.svg";
 import useLocalStorage from "../../../../utils/useLocalStorage";
 import Toggle from "../../../../components/Toggle";
 import * as Constants from "../../../../utils/constants";
+import ThemesToggle from "./ThemesToggle";
 
 import "./styles.css";
 
@@ -27,7 +28,7 @@ const SettingsBlock = () => {
       <div className="settingsIcon" onClick={handleClick}>
         <img
           src={gearSolid}
-          className={classNames("gearSolid ", { rotated: !!clickedGear })}
+          className={classNames("svgSolid ", { rotated: !!clickedGear })}
         />
       </div>
       {clickedGear && (
@@ -38,13 +39,13 @@ const SettingsBlock = () => {
             onClick={() => {}}
             show={false}
           />
-
           <Toggle
             label="Toggle me"
             toggled={renderPostsMode && renderPostsMode !== Constants.GRID_MODE}
             onClick={onClickVerticalHandler}
             isVertical
           />
+          <ThemesToggle />
         </div>
       )}
     </div>

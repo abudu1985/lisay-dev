@@ -34,14 +34,14 @@
   min-width: 150px;
 }
 
-.gearSolid {
+.svgSolid {
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(193deg) brightness(118%) contrast(119%);
   -moz-transition: all .3s linear;
   -webkit-transition: all .3s linear;
   transition: all .3s linear;
 }
 
-.gearSolid.rotated {
+.svgSolid.rotated {
   -moz-transform:rotate(90deg);
   -webkit-transform:rotate(90deg);
   transform:rotate(90deg);

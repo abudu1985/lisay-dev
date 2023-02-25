@@ -7,7 +7,7 @@ const Table = ({ data, columns, withTotal = true }) => (
       <thead>
         <tr>
           {columns.map((item, index) => (
-            <TableHeadItem item={item} />
+            <TableHeadItem item={item} key={index} />
           ))}
         </tr>
       </thead>
