@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import affirmations from "../../services/affirmations";
 import sendQuoteRequest from "../../services/db/sendQuoteRequest";
-import Card from "../Card";
 import LightBoxImage from "../LightBoxImage";
 import Tags from "../Tags";
+import { SidebarCardStyled } from "../../styles/SidebarCardStyled";
 
 import "./style.css";
 
@@ -34,13 +34,7 @@ const Sidebar = ({ width }) => {
   return (
     <div className="sidebarContainer" style={{ width }}>
       {affirmation && <div className="sidebarAffirmation">{affirmation}</div>}
-      <Card
-        style={{
-          marginBottom: "20px",
-          padding: "20px",
-          boxSizing: "border-box",
-        }}
-      >
+      <SidebarCardStyled>
         <div className="cardHeader">
           <span>About </span>
           <span className="cardHeaderSecond">It</span>
@@ -50,15 +44,15 @@ const Sidebar = ({ width }) => {
           imageSrc={catSrc}
           wrapperClass="profileImageContainer"
         />
-        <div className="cardBody">
-          <p className="personalBio">Funny cats...)</p>
-          <p className="personalBio">
+        <div>
+          <p className="sidebarCardText">Funny cats...)</p>
+          <p className="sidebarCardText">
             {" "}
             I am noting what I've learned and interested in, to find later here
             for myself.
           </p>
         </div>
-      </Card>
+      </SidebarCardStyled>
       <Tags />
     </div>
   );

@@ -21,8 +21,6 @@ import ArticleBodyBlock from "./ArdicleBodyBlock";
 import Preloader from "../../Preloader";
 import NotFound from "../../NotFound";
 
-import "./style.css";
-
 const scrollWindowToTop = () => window.scrollTo(0, 0);
 
 const ReadArticle = ({ article, seconds }) => {

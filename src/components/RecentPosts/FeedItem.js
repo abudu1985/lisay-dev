@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Card from "../Card";
+import { PostCardStyled } from "../../styles/PostCardStyled";
 import { clearSearch } from "../../store/actions/articles";
 
 import "./style.css";
@@ -26,10 +26,7 @@ const FeedItem = ({ article }) => {
   return (
     <>
       {chosenArticle && <div className="overlaySpinner"></div>}
-      <Card
-        style={{ marginBottom: "20px" }}
-        onClick={() => setChosenArticle(article)}
-      >
+      <PostCardStyled onClick={() => setChosenArticle(article)}>
         <div>
           <img
             className="postImageWrapper"
@@ -38,7 +35,7 @@ const FeedItem = ({ article }) => {
           />
         </div>
         <div className="postImageTitle">{article.title}</div>
-      </Card>
+      </PostCardStyled>
     </>
   );
 };

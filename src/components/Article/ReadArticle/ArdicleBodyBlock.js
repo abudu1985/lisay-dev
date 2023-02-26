@@ -1,50 +1,46 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom';
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-import './style.css';
 import LightBoxImage from "../../LightBoxImage";
 import PrevNextBlock from "../PrevNextBlock";
 import QuillBodyBlock from "./QuillBodyBlock";
+import { ReadArticleStyled } from "../../../styles/ReadArticleStyled";
 
-const ArticleBodyBlock = ({article}) => {
-    const history = useHistory();
+const ArticleBodyBlock = ({ article }) => {
+  const history = useHistory();
 
-    const goToArticle = nextArticle => {
-        history.push({
-            pathname: `/article/${nextArticle.slug}`,
-            state: {data: nextArticle}
-        })
-    };
+  const goToArticle = (nextArticle) => {
+    history.push({
+      pathname: `/article/${nextArticle.slug}`,
+      state: { data: nextArticle },
+    });
+  };
 
-    return (
-        <div>
-            <LightBoxImage
-                imageClass="readArticlePreviewImgChild"
-                imageSrc={article.articlePreview}
-                wrapperClass="readArticlePreviewImgWrap"
-            />
-            <br/>
-            <div className="readArticleTitle">
-                {article.title}
-            </div>
-            <br/>
-            <div className="readArticleDescription">
-                {article.description}
-            </div>
-            <div className="articleDateBlock">
-                Posted on {article.postedOn}
-            </div>
-            <QuillBodyBlock data={article.body}/>
-            <div className="tagLabelsBlock">
-                {
-                    article.tagList.map((tag, index) => {
-                        return (<span className="tagLabel" key={index}>{tag}</span>)
-                    })
-                }
-            </div>
-            <PrevNextBlock currentId={article.id} goToArticle={goToArticle}/>
-        </div>
-    )
+  return (
+    <ReadArticleStyled>
+      <LightBoxImage
+        imageClass="readArticlePreviewImgChild"
+        imageSrc={article.articlePreview}
+        wrapperClass="readArticlePreviewImgWrap"
+      />
+      <br />
+      <div className="readArticleTitle">{article.title}</div>
+      <br />
+      <div className="readArticleDescription">{article.description}</div>
+      <div className="articleDateBlock">Posted on {article.postedOn}</div>
+      <QuillBodyBlock data={article.body} />
+      <div className="tagLabelsBlock">
+        {article.tagList.map((tag, index) => {
+          return (
+            <span className="tagLabel" key={index}>
+              {tag}
+            </span>
+          );
+        })}
+      </div>
+      <PrevNextBlock currentId={article.id} goToArticle={goToArticle} />
+    </ReadArticleStyled>
+  );
 };
 
 export default ArticleBodyBlock;
