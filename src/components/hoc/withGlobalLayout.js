@@ -16,7 +16,7 @@ import {
 import { light, dark } from "../../styles/themes";
 
 const withGlobalLayout = (WrappedComponent) => (props) => {
-  const defaultThemeMode = Constants.DARK_THEME_MODE;
+  const defaultThemeMode = Constants.LIGHT_THEME_MODE;
   const [renderThemeMode, setRenderThemeMode] =
     useLocalStorage("renderThemeMode");
 
