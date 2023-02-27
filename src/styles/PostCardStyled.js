@@ -13,7 +13,8 @@ export const PostCardStyled = styled.div`
   }
 
   .postImageWrapper {
-    height: ${({ isMobile }) => (isMobile ? "180px" : "310px")};
+    height: ${({ shouldBeSmallCard }) =>
+      shouldBeSmallCard ? "170px" : "310px"};
     width: 100%;
     border-radius: 7px 7px 0 0;
   }

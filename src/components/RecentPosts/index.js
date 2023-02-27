@@ -20,9 +20,9 @@ import "./style.css";
 const findBySearchString = (publishedArticles, searchString) =>
   publishedArticles.filter(
     (el) =>
-      el.title.includes(searchString) ||
-      el.description.includes(searchString) ||
-      el.tagList.includes(searchString)
+      el.title.toLowerCase().includes(searchString.toLowerCase()) ||
+      el.description.toLowerCase().includes(searchString.toLowerCase()) ||
+      el.tagList.includes(searchString.toLowerCase())
   );
 
 const findBySearchTag = (publishedArticles, searchTag) =>

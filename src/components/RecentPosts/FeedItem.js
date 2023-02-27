@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { PostCardStyled } from "../../styles/PostCardStyled";
 import { clearSearch } from "../../store/actions/articles";
 import { useMatchMedia } from "../../utils/useMatchMedia";
+import useLocalStorage from "../../utils/useLocalStorage";
+import * as Constants from "../../utils/constants";
 
 import "./style.css";
 
@@ -12,6 +14,9 @@ const FeedItem = ({ article }) => {
   const dispatch = useDispatch();
   const [chosenArticle, setChosenArticle] = useState(null);
   const { isMobile } = useMatchMedia();
+
+  const [renderPostsMode, setRenderPostsMode] =
+    useLocalStorage("renderPostsMode");
 
   useEffect(() => {
     if (chosenArticle) {
@@ -30,7 +35,7 @@ const FeedItem = ({ article }) => {
       {chosenArticle && <div className="overlaySpinner"></div>}
       <PostCardStyled
         onClick={() => setChosenArticle(article)}
-        isMobile={isMobile}
+        shouldBeSmallCard={isMobile && renderPostsMode === Constants.GRID_MODE}
       >
         <div>
           <img
