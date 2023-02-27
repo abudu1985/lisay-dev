@@ -13,13 +13,13 @@ export const PostCardStyled = styled.div`
   }
 
   .postImageWrapper {
-    height: 310px;
+    height: ${({ isMobile }) => (isMobile ? "180px" : "310px")};
     width: 100%;
     border-radius: 7px 7px 0 0;
   }
 
   .postImageTitle {
-    height: 60px;
+    min-height: 60px;
     line-height: 21px;
     text-align: center;
     border-radius: 0 0 7px 7px;

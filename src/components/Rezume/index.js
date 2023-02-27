@@ -11,12 +11,11 @@ import {
   MyPhoto,
   CollorToggleBlock,
 } from "./styles/StyledComponents";
-import * as Constant from "../../utils/constants";
-import useWindowSize from "../../utils/useWindowSize";
+import { useMatchMedia } from "../../utils/useMatchMedia";
 
 const Rezume = (props) => {
   const [selectedTheme, setSelectedTheme] = useState(light);
-  const { width } = useWindowSize();
+  const { isDesktop } = useMatchMedia();
 
   return (
     <ThemeProvider theme={selectedTheme}>
@@ -29,7 +28,7 @@ const Rezume = (props) => {
               toggled={true}
               onClick={(bool) => setSelectedTheme(bool ? light : dark)}
             />
-            {width > Constant.MIDDLE_SIZE && (
+            {isDesktop && (
               <PrintButton
                 id={"container--main"}
                 label={<img src={PDFIcon} alt="pdf" />}

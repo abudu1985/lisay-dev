@@ -10,7 +10,7 @@ const GridGenerator = ({ cols, children }) => {
       {rows.map((cols, index) => (
         <Row key={index}>
           {cols.map((col, index) => (
-            <Col xxl={4} xl={4} lg={6} md={6} sm={6} xs={12} key={index}>
+            <Col xxl={4} xl={4} lg={6} md={6} sm={6} xs={6} key={index}>
               {col}
             </Col>
           ))}

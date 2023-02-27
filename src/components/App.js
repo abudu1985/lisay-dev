@@ -1,12 +1,12 @@
 import React from "react";
-import TopMenu from "./TopMenu";
 import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./Navbar";
 import Routes from "../services/routes";
 
 const App = () => {
   return (
     <Router>
-      <TopMenu />
+      <Navbar />
       <Routes />
     </Router>
   );

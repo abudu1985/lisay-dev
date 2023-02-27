@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { PostCardStyled } from "../../styles/PostCardStyled";
 import { clearSearch } from "../../store/actions/articles";
+import { useMatchMedia } from "../../utils/useMatchMedia";
 
 import "./style.css";
 
@@ -10,6 +11,7 @@ const FeedItem = ({ article }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [chosenArticle, setChosenArticle] = useState(null);
+  const { isMobile } = useMatchMedia();
 
   useEffect(() => {
     if (chosenArticle) {
@@ -26,7 +28,10 @@ const FeedItem = ({ article }) => {
   return (
     <>
       {chosenArticle && <div className="overlaySpinner"></div>}
-      <PostCardStyled onClick={() => setChosenArticle(article)}>
+      <PostCardStyled
+        onClick={() => setChosenArticle(article)}
+        isMobile={isMobile}
+      >
         <div>
           <img
             className="postImageWrapper"

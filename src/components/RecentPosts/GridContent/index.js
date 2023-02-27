@@ -2,15 +2,13 @@ import React from "react";
 
 import GridGenerator from "./GridGenerator";
 import FeedItem from "../FeedItem";
-import useWindowSize from "../../../utils/useWindowSize";
-import * as Constant from "../../../utils/constants";
+import { useMatchMedia } from "../../../utils/useMatchMedia";
 
 const GridContent = ({ articles }) => {
-  const { width } = useWindowSize();
-  const getNumOfColumns = () => (width < Constant.MIDDLE_SIZE ? 2 : 3);
+  const { isMobile, isTablet } = useMatchMedia();
 
   return (
-    <GridGenerator cols={getNumOfColumns()}>
+    <GridGenerator cols={isMobile || isTablet ? 2 : 3}>
       {articles.map((article, index) => (
         <FeedItem article={article} key={index} />
       ))}
