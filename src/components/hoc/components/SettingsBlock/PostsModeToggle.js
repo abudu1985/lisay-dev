@@ -4,32 +4,34 @@ import useLocalStorage from "../../../../utils/useLocalStorage";
 import * as Constants from "../../../../utils/constants";
 import gridSVG from "../../../../services/grid.svg";
 import verticalSVG from "../../../../services/vertical.svg";
+import horizontalSVG from "../../../../services/horizontal.svg";
 
 const PostsModeToggle = () => {
   const [renderPostsMode, setRenderPostsMode] =
     useLocalStorage("renderPostsMode");
 
-  const onClickModeHandler = (string) => {
-    const result =
-      string === Constants.VERTICAL_MODE
-        ? Constants.VERTICAL_MODE
-        : Constants.GRID_MODE;
-    setRenderPostsMode(JSON.stringify(result));
+  const modesToSvgMap = {
+    [Constants.VERTICAL_MODE]: verticalSVG,
+    [Constants.GRID_MODE]: gridSVG,
+    [Constants.HORISONTAL_MODE]: horizontalSVG,
   };
 
-  return renderPostsMode === Constants.VERTICAL_MODE ? (
+  const onClickModeHandler = (string) => {
+    const arr = Object.keys(modesToSvgMap);
+    let i = arr.findIndex((item) => item === renderPostsMode);
+    i++;
+    if (i === arr.length) {
+      i = 0;
+    }
+    setRenderPostsMode(JSON.stringify(arr[i]));
+  };
+
+  return (
     <img
-      src={verticalSVG}
+      src={modesToSvgMap[renderPostsMode]}
       alt="SVG as an image"
       className="svgSolid"
-      onClick={() => onClickModeHandler(Constants.GRID_MODE)}
-    />
-  ) : (
-    <img
-      src={gridSVG}
-      alt="SVG as an image"
-      className="svgSolid"
-      onClick={() => onClickModeHandler(Constants.VERTICAL_MODE)}
+      onClick={() => onClickModeHandler(renderPostsMode)}
     />
   );
 };

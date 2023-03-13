@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Preloader from "../Preloader";
 import GridContent from "./GridContent";
 import ScrollContent from "./ScrollContent";
+import HorizontalContent from "./HorizontalContent";
 import useLocalStorage from "../../utils/useLocalStorage";
 import * as Constants from "../../utils/constants";
 import { getPublishedArticles } from "../../store/selectors/articlesSelectors";
@@ -34,6 +35,8 @@ const ResetButton = ({ resetSearch }) => (
   </div>
 );
 
+const scrollWindowToTop = () => window.scrollTo(0, 0);
+
 const RecentPosts = (props) => {
   const dispatch = useDispatch();
   let publishedArticles = useSelector(getPublishedArticles);
@@ -60,6 +63,10 @@ const RecentPosts = (props) => {
     return () => clearInterval(interval);
   }, [timer, publishedArticles, searchString]);
 
+  useEffect(() => {
+    scrollWindowToTop();
+  }, [renderPostsMode]);
+
   const resetSearch = () => {
     dispatch(clearSearch());
     setNoArticles(false);
@@ -69,6 +76,7 @@ const RecentPosts = (props) => {
     const renderPostsModeEnum = {
       [Constants.GRID_MODE]: <GridContent articles={data} />,
       [Constants.VERTICAL_MODE]: <ScrollContent articles={data} />,
+      [Constants.HORISONTAL_MODE]: <HorizontalContent articles={data} />,
     };
     return renderPostsModeEnum[mode];
   };

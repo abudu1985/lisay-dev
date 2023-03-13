@@ -31,7 +31,7 @@ const ScrollContent = ({ articles }) => {
       <Col xxl={4} xl={6} lg={8} md={8} sm={8} xs={12}>
         {articles.map((article, index) => {
           return (
-            <div class="scroll_content_item" key={index}>
+            <div className="scroll_content_item" key={index}>
               <FeedItem article={article} key={index} />
             </div>
           );
