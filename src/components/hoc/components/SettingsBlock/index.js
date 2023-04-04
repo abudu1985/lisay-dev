@@ -5,7 +5,7 @@ import gearSolid from "../../../../services/gear-solid.svg";
 import Toggle from "../../../../components/Toggle";
 import ThemesToggle from "./ThemesToggle";
 import PostsModeToggle from "./PostsModeToggle";
-
+import popSound from "../../../../services/pop.mp3"
 import "./styles.css";
 
 const SettingsBlock = () => {
@@ -13,6 +13,9 @@ const SettingsBlock = () => {
 
   const handleClick = () => {
     const curr = !clickedGear;
+    let POP_SOUND = new Audio(popSound);
+    POP_SOUND.volume = 0.1;
+    POP_SOUND.play();
     setClickedGear(curr);
   };
 
